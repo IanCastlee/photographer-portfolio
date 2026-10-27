@@ -6,7 +6,7 @@ import { Camera, Award, Aperture, Layers } from 'lucide-react';
 export const AboutSection = ({ profile, stats = [], gear = [] }) => {
   return (
     <section id="about" className="py-24 sm:py-32 border-t border-neutral-200 dark:border-neutral-800/80">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1680px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10">
         {/* Main Bio Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-20">
           {/* Portrait Image Column */}

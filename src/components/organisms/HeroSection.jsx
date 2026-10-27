@@ -20,8 +20,8 @@ export const HeroSection = ({ profile, featuredProjects = [] }) => {
       {/* Background ambient glow */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[320px] bg-neutral-500/5 dark:bg-white/[0.02] rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full my-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+      <div className="max-w-[1680px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 w-full my-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Left Text Column */}
           <div className="lg:col-span-7 flex flex-col items-start z-10">
             {/* Availability status badge */}
@@ -38,7 +38,7 @@ export const HeroSection = ({ profile, featuredProjects = [] }) => {
               Hello, I'm <span className="underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-8">{profile.name}</span>, a professional photographer.
             </h1>
 
-            <p className="text-sm sm:text-base lg:text-sm xl:text-base text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-xl mb-5 lg:mb-6 font-light">
+            <p className="text-sm sm:text-base lg:text-sm xl:text-base text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-2xl mb-5 lg:mb-6 font-light">
               {profile.tagline} {profile.bio}
             </p>
 
@@ -62,7 +62,7 @@ export const HeroSection = ({ profile, featuredProjects = [] }) => {
             </div>
 
             {/* Social handles list */}
-            <div className="flex items-center gap-4 pt-3.5 border-t border-neutral-200 dark:border-neutral-800/80 w-full max-w-xl">
+            <div className="flex items-center gap-4 pt-3.5 border-t border-neutral-200 dark:border-neutral-800/80 w-full max-w-2xl">
               <span className="text-[11px] uppercase font-mono tracking-widest text-neutral-500 dark:text-neutral-400">
                 Follow:
               </span>
@@ -100,7 +100,7 @@ export const HeroSection = ({ profile, featuredProjects = [] }) => {
 
           {/* Right Featured Visual Collage (Matches the photographer photo + camera collage from screenshot) */}
           <div className="lg:col-span-5 relative flex items-center justify-center">
-            <div className="relative mx-auto w-full max-w-sm sm:max-w-md lg:max-w-[400px] xl:max-w-[440px]">
+            <div className="relative mx-auto w-full max-w-sm sm:max-w-md lg:max-w-[440px] xl:max-w-[480px] 2xl:max-w-[520px]">
               {/* Primary portrait shot constrained to viewport */}
               <div
                 onClick={() => featuredProjects[0] && openLightbox(featuredProjects[0])}
