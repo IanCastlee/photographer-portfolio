@@ -16,7 +16,7 @@ export const HeroSection = ({ profile, featuredProjects = [] }) => {
   };
 
   return (
-    <section className="relative min-h-screen lg:h-screen lg:max-h-screen flex items-center pt-24 pb-12 lg:pt-20 lg:pb-6 overflow-hidden">
+    <section id="home" className="relative min-h-screen lg:h-screen lg:max-h-screen flex items-center pt-24 pb-12 lg:pt-20 lg:pb-6 overflow-hidden">
       {/* Background ambient glow */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[320px] bg-neutral-500/5 dark:bg-white/[0.02] rounded-full blur-3xl pointer-events-none" />
 

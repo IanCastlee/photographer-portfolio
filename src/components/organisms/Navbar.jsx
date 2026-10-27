@@ -6,16 +6,10 @@ import { Button } from '../atoms/Button';
 export const Navbar = ({ brandName = "PHOTOGRAPHER X" }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const [activeSection, setActiveSection] = useState('#home');
 
   const navLinks = [
+    { label: "Home", href: "#home" },
     { label: "Works", href: "#works" },
     { label: "Services", href: "#services" },
     { label: "About", href: "#about" },
@@ -23,8 +17,42 @@ export const Navbar = ({ brandName = "PHOTOGRAPHER X" }) => {
     { label: "Contact", href: "#contact" },
   ];
 
+  // Robust scroll spy: updates activeSection as the user scrolls
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+
+      const sectionIds = ['#home', '#works', '#services', '#about', '#gear', '#contact'];
+      const scrollPosition = window.scrollY + 180; // Offset for fixed navbar
+
+      // Check if user has scrolled near the bottom of the page
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 60) {
+        setActiveSection('#contact');
+        return;
+      }
+
+      // Find the current section in view
+      for (let i = sectionIds.length - 1; i >= 0; i--) {
+        const id = sectionIds[i];
+        const element = document.querySelector(id);
+        if (element) {
+          const top = element.offsetTop;
+          if (scrollPosition >= top) {
+            setActiveSection(id);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Initial check on mount
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const handleScrollTo = (e, href) => {
     e.preventDefault();
+    setActiveSection(href);
     setMobileMenuOpen(false);
     const element = document.querySelector(href);
     if (element) {
@@ -43,7 +71,8 @@ export const Navbar = ({ brandName = "PHOTOGRAPHER X" }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Brand Logo */}
         <a
-          href="#"
+          href="#home"
+          onClick={(e) => handleScrollTo(e, '#home')}
           className="flex items-center gap-2.5 text-neutral-900 dark:text-white font-bold tracking-tighter text-lg uppercase group"
         >
           <div className="w-8 h-8 rounded-full bg-neutral-900 text-white dark:bg-white dark:text-black flex items-center justify-center transition-transform group-hover:scale-110">
@@ -52,18 +81,34 @@ export const Navbar = ({ brandName = "PHOTOGRAPHER X" }) => {
           <span className="tracking-widest font-mono text-sm">{brandName}</span>
         </a>
 
-        {/* Desktop Nav Links */}
+        {/* Desktop Nav Links with Animated Active Bottom Line Indicator */}
         <nav className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              onClick={(e) => handleScrollTo(e, link.href)}
-              className="text-xs uppercase tracking-widest font-mono text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors duration-200"
-            >
-              {link.label}
-            </a>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = activeSection === link.href;
+            return (
+              <a
+                key={link.label}
+                href={link.href}
+                onClick={(e) => handleScrollTo(e, link.href)}
+                className={`relative py-1 text-xs uppercase tracking-widest font-mono transition-all duration-300 group ${
+                  isActive
+                    ? 'text-neutral-900 dark:text-white font-bold'
+                    : 'text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white font-medium'
+                }`}
+              >
+                <span>{link.label}</span>
+
+                {/* Animated Bottom Line Indicator with Glow */}
+                <span
+                  className={`absolute -bottom-1 left-0 right-0 h-[2px] rounded-full transition-all duration-300 ease-out origin-center ${
+                    isActive
+                      ? 'bg-neutral-900 dark:bg-white scale-x-100 opacity-100 shadow-[0_0_8px_rgba(0,0,0,0.3)] dark:shadow-[0_0_8px_rgba(255,255,255,0.7)]'
+                      : 'bg-neutral-400 dark:bg-neutral-600 scale-x-0 opacity-0 group-hover:scale-x-60 group-hover:opacity-50'
+                  }`}
+                />
+              </a>
+            );
+          })}
         </nav>
 
         {/* Right Actions: Theme Toggle & Booking CTA */}
@@ -96,17 +141,25 @@ export const Navbar = ({ brandName = "PHOTOGRAPHER X" }) => {
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
         <div className="sm:hidden bg-white/95 dark:bg-[#0b0b0c]/98 backdrop-blur-xl border-b border-neutral-200 dark:border-neutral-800 px-6 py-6 space-y-4 animate-fadeIn">
-          <div className="flex flex-col space-y-3">
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                onClick={(e) => handleScrollTo(e, link.href)}
-                className="text-sm uppercase tracking-wider font-mono text-neutral-700 dark:text-neutral-300 hover:text-black dark:hover:text-white py-2"
-              >
-                {link.label}
-              </a>
-            ))}
+          <div className="flex flex-col space-y-2">
+            {navLinks.map((link) => {
+              const isActive = activeSection === link.href;
+              return (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  onClick={(e) => handleScrollTo(e, link.href)}
+                  className={`flex items-center justify-between px-3 py-2.5 rounded-lg text-sm uppercase tracking-wider font-mono transition-colors ${
+                    isActive
+                      ? 'bg-neutral-100 dark:bg-neutral-900 text-neutral-900 dark:text-white font-bold border-l-2 border-neutral-900 dark:border-white'
+                      : 'text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white'
+                  }`}
+                >
+                  <span>{link.label}</span>
+                  {isActive && <span className="w-1.5 h-1.5 rounded-full bg-neutral-900 dark:bg-white" />}
+                </a>
+              );
+            })}
           </div>
           <div className="pt-4 border-t border-neutral-200 dark:border-neutral-800">
             <Button
