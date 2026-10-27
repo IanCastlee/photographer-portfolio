@@ -6,7 +6,7 @@ import { Mail, Phone, MapPin, Calendar, Clock } from 'lucide-react';
 export const ContactSection = ({ profile, selectedService = '' }) => {
   return (
     <section id="contact" className="py-24 sm:py-32 border-t border-neutral-200 dark:border-neutral-800/80">
-      <div className="max-w-[1680px] mx-auto px-6 sm:px-8 lg:px-8 xl:px-9">
+      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Left Studio Information */}
           <div className="lg:col-span-5 flex flex-col justify-between">

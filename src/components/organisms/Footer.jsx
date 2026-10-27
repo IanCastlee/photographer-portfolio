@@ -8,7 +8,7 @@ export const Footer = ({ profile }) => {
 
   return (
     <footer className="bg-neutral-100 dark:bg-[#080809] text-neutral-800 dark:text-neutral-300 border-t border-neutral-200 dark:border-neutral-900 transition-colors">
-      <div className="max-w-[1680px] mx-auto px-6 sm:px-8 lg:px-8 xl:px-9 py-16">
+      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16 py-16">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-start justify-between">
           {/* Brand info */}
           <div className="md:col-span-5 space-y-4">

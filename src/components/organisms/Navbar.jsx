@@ -70,7 +70,7 @@ export const Navbar = ({ brandName = "PHOTOGRAPHER X" }) => {
           : 'bg-transparent py-5'
       }`}
     >
-      <div className="max-w-[1680px] mx-auto px-6 sm:px-8 lg:px-8 xl:px-9 flex items-center justify-between">
+      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16 flex items-center justify-between">
         {/* Brand Logo */}
         <a
           href="#home"

@@ -20,7 +20,7 @@ export const HeroSection = ({ profile, featuredProjects = [] }) => {
       {/* Background ambient glow */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[320px] bg-neutral-500/5 dark:bg-white/[0.02] rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-[1680px] mx-auto px-6 sm:px-8 lg:px-8 xl:px-9 w-full my-auto">
+      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16 w-full my-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Left Text Column */}
           <div className="lg:col-span-7 flex flex-col items-start z-10">
