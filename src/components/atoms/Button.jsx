@@ -22,7 +22,7 @@ export const Button = ({
 
   const variantStyles = {
     // Pure high-contrast pill button like in Webflow template
-    primary: "bg-neutral-100 text-neutral-900 hover:bg-white hover:shadow-lg dark:bg-white dark:text-black dark:hover:bg-neutral-200 shadow-sm",
+    primary: "bg-neutral-900 text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 shadow-sm",
     secondary: "bg-neutral-900 text-white hover:bg-neutral-800 dark:bg-neutral-800 dark:text-neutral-100 dark:hover:bg-neutral-700 border border-neutral-700/50",
     outline: "border border-neutral-300 text-neutral-800 hover:border-neutral-900 hover:bg-neutral-100 dark:border-neutral-700 dark:text-neutral-200 dark:hover:border-white dark:hover:text-white dark:hover:bg-white/5",
     ghost: "text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100 dark:text-neutral-400 dark:hover:text-white dark:hover:bg-neutral-800/50",

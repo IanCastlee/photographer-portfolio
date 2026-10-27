@@ -21,7 +21,7 @@ export const PortfolioTemplate = ({ data }) => {
   };
 
   return (
-    <div className="min-h-screen bg-light-bg dark:bg-dark-bg text-light-text dark:text-dark-text transition-colors duration-300">
+    <div className="min-h-screen bg-[#f8f9fa] dark:bg-[#0b0b0c] text-neutral-900 dark:text-[#f4f4f5] transition-colors duration-300">
       {/* Navigation */}
       <Navbar brandName={data.profile.brandName} />
 

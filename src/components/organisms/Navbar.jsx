@@ -63,8 +63,10 @@ export const Navbar = ({ brandName = "PHOTOGRAPHER X" }) => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-white/85 dark:bg-[#0b0b0c]/85 backdrop-blur-md border-b border-neutral-200 dark:border-white/5 py-3.5 shadow-sm'
+        mobileMenuOpen
+          ? 'bg-white dark:bg-[#0b0b0c] border-b border-neutral-200 dark:border-neutral-800 py-3.5 shadow-xl'
+          : isScrolled
+          ? 'bg-white/90 dark:bg-[#0b0b0c]/90 backdrop-blur-md border-b border-neutral-200 dark:border-white/5 py-3.5 shadow-sm'
           : 'bg-transparent py-5'
       }`}
     >
@@ -130,7 +132,7 @@ export const Navbar = ({ brandName = "PHOTOGRAPHER X" }) => {
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 rounded-lg text-neutral-800 dark:text-white hover:bg-neutral-200/50 dark:hover:bg-neutral-800"
+            className="p-2 rounded-lg text-neutral-800 dark:text-white hover:bg-neutral-200/50 dark:hover:bg-neutral-800 transition-colors"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -140,7 +142,7 @@ export const Navbar = ({ brandName = "PHOTOGRAPHER X" }) => {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="sm:hidden bg-white/95 dark:bg-[#0b0b0c]/98 backdrop-blur-xl border-b border-neutral-200 dark:border-neutral-800 px-6 py-6 space-y-4 animate-fadeIn">
+        <div className="sm:hidden bg-white dark:bg-[#0b0b0c] border-t border-neutral-200 dark:border-neutral-800 px-6 py-6 space-y-5 animate-fadeIn shadow-2xl">
           <div className="flex flex-col space-y-2">
             {navLinks.map((link) => {
               const isActive = activeSection === link.href;
@@ -149,14 +151,14 @@ export const Navbar = ({ brandName = "PHOTOGRAPHER X" }) => {
                   key={link.label}
                   href={link.href}
                   onClick={(e) => handleScrollTo(e, link.href)}
-                  className={`flex items-center justify-between px-3 py-2.5 rounded-lg text-sm uppercase tracking-wider font-mono transition-colors ${
+                  className={`flex items-center justify-between px-4 py-3 rounded-xl text-sm uppercase tracking-wider font-mono transition-colors ${
                     isActive
-                      ? 'bg-neutral-100 dark:bg-neutral-900 text-neutral-900 dark:text-white font-bold border-l-2 border-neutral-900 dark:border-white'
-                      : 'text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white'
+                      ? 'bg-neutral-900 text-white dark:bg-white dark:text-black font-bold shadow-sm'
+                      : 'text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-900 hover:text-black dark:hover:text-white'
                   }`}
                 >
                   <span>{link.label}</span>
-                  {isActive && <span className="w-1.5 h-1.5 rounded-full bg-neutral-900 dark:bg-white" />}
+                  {isActive && <span className="w-1.5 h-1.5 rounded-full bg-white dark:bg-black" />}
                 </a>
               );
             })}
@@ -165,7 +167,7 @@ export const Navbar = ({ brandName = "PHOTOGRAPHER X" }) => {
             <Button
               variant="primary"
               size="md"
-              className="w-full"
+              className="w-full justify-center"
               onClick={(e) => handleScrollTo(e, '#contact')}
             >
               Contact Me
