@@ -4,10 +4,10 @@ import { useLightbox } from '../../context/LightboxContext';
 
 /**
  * CoverFlowCarousel
- * 3D Cover Flow / Center-Stacked Photo Showcase.
- * - Center elevated card with thick border (dark/light contrast), rounded corners, deep drop shadow.
- * - Side cards stepped down in scale and opacity, with outer cards fading into edge vignette masks.
- * - Non-blocking vertical scroll (touch-pan-y) for flawless mobile, tablet, and desktop scrolling.
+ * High-impact Maximized-Width 3D Cover Flow Photo Carousel.
+ * - Center elevated card with thick contrast border, rounded corners, and deep drop shadow.
+ * - Layered side cards spanning across the full available width matching editorial spreads.
+ * - Non-blocking vertical scroll (touch-pan-y) ensuring smooth page scrolling on all devices.
  */
 export const CoverFlowCarousel = ({
   items = [],
@@ -96,6 +96,10 @@ export const CoverFlowCarousel = ({
 
   if (!items || items.length === 0) return null;
 
+  const activeItem = items[activeIndex];
+  const activeItemId = activeItem?.id || activeIndex;
+  const isCurrentBookmarked = !!bookmarkedIds[activeItemId];
+
   return (
     <div
       className={`relative w-full touch-pan-y select-none overflow-hidden ${className}`}
@@ -103,12 +107,30 @@ export const CoverFlowCarousel = ({
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
     >
-      {/* Edge Vignette Gradient Fades */}
-      <div className="absolute left-0 inset-y-0 w-8 sm:w-16 lg:w-28 bg-gradient-to-r from-[#f8f9fa] dark:from-[#0b0b0c] to-transparent pointer-events-none z-30 transition-colors" />
-      <div className="absolute right-0 inset-y-0 w-8 sm:w-16 lg:w-28 bg-gradient-to-l from-[#f8f9fa] dark:from-[#0b0b0c] to-transparent pointer-events-none z-30 transition-colors" />
+      {/* Edge Vignette Gradient Fades (Softly dissolves outer cards into background) */}
+      <div className="absolute left-0 inset-y-0 w-12 sm:w-24 lg:w-44 xl:w-56 bg-gradient-to-r from-[#f8f9fa] dark:from-[#0b0b0c] to-transparent pointer-events-none z-30 transition-colors" />
+      <div className="absolute right-0 inset-y-0 w-12 sm:w-24 lg:w-44 xl:w-56 bg-gradient-to-l from-[#f8f9fa] dark:from-[#0b0b0c] to-transparent pointer-events-none z-30 transition-colors" />
 
-      {/* 3D Cover Flow Cards Canvas */}
-      <div className="relative w-full h-[400px] sm:h-[460px] md:h-[500px] lg:h-[520px] flex items-center justify-center">
+      {/* Floating Bookmark Button at top-right of the carousel area (Matches user screenshot) */}
+      <div className="absolute top-2 right-4 sm:top-4 sm:right-8 lg:right-12 z-40">
+        <button
+          type="button"
+          onClick={(e) => toggleBookmark(e, activeItemId)}
+          aria-label="Bookmark photo"
+          className="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-neutral-900/70 dark:bg-neutral-800/80 hover:bg-neutral-900 dark:hover:bg-neutral-700 text-white backdrop-blur-md border border-white/20 flex items-center justify-center shadow-xl transition-all active:scale-95 group"
+        >
+          <Bookmark
+            className={`w-4 h-4 transition-all duration-300 ${
+              isCurrentBookmarked
+                ? 'fill-amber-400 text-amber-400 scale-110'
+                : 'text-neutral-200 group-hover:scale-110'
+            }`}
+          />
+        </button>
+      </div>
+
+      {/* Maximized-Width 3D Cover Flow Cards Canvas */}
+      <div className="relative w-full h-[440px] sm:h-[520px] md:h-[600px] lg:h-[680px] xl:h-[720px] flex items-center justify-center">
         {items.map((item, idx) => {
           // Circular offset calculation
           let offset = idx - activeIndex;
@@ -122,28 +144,32 @@ export const CoverFlowCarousel = ({
 
           if (isHidden) return null;
 
-          // Responsive percentage displacement
-          let translateX = offset * 42;
+          // Wide horizontal displacement spanning across the screen
+          let translateX = 0;
           let scale = 1;
           let opacity = 1;
           let zIndex = 20;
 
           if (isCenter) {
+            translateX = 0;
             scale = 1.06;
             opacity = 1;
             zIndex = 30;
           } else if (isImmediate) {
-            scale = 0.88;
+            // Cards immediately adjacent to center
+            translateX = offset * 86; // percentage offset
+            scale = 0.90;
             opacity = 0.72;
             zIndex = 20;
           } else if (isFar) {
-            scale = 0.74;
-            opacity = 0.38;
+            // Outermost cards spreading across the wide screen width
+            translateX = offset * 168; // percentage offset
+            scale = 0.76;
+            opacity = 0.40;
             zIndex = 10;
           }
 
           const itemId = item.id || idx;
-          const isBookmarked = !!bookmarkedIds[itemId];
 
           return (
             <div
@@ -155,15 +181,15 @@ export const CoverFlowCarousel = ({
                 opacity,
               }}
               className={`absolute transition-all duration-500 ease-out cursor-pointer group ${
-                isCenter ? 'cursor-pointer' : 'hover:opacity-90 hover:scale-[0.92]'
+                isCenter ? 'cursor-pointer' : 'hover:opacity-90 hover:scale-[0.93]'
               }`}
             >
-              {/* Card Shell */}
+              {/* Card Shell — Wide and tall editorial proportions */}
               <div
-                className={`relative w-[210px] sm:w-[260px] md:w-[290px] lg:w-[320px] aspect-[3/4] overflow-hidden transition-all duration-500 ${
+                className={`relative w-[260px] sm:w-[320px] md:w-[380px] lg:w-[440px] xl:w-[480px] 2xl:w-[500px] aspect-[3/4] overflow-hidden transition-all duration-500 ${
                   isCenter
-                    ? 'rounded-3xl border-4 border-neutral-900 dark:border-white shadow-[0_25px_60px_rgba(0,0,0,0.55)]'
-                    : 'rounded-2xl border border-neutral-300 dark:border-white/10 shadow-lg'
+                    ? 'rounded-3xl border-4 border-neutral-900 dark:border-white shadow-[0_30px_70px_rgba(0,0,0,0.65)]'
+                    : 'rounded-2xl border border-neutral-300 dark:border-white/10 shadow-xl'
                 }`}
               >
                 {/* Photo Image */}
@@ -178,57 +204,39 @@ export const CoverFlowCarousel = ({
                   }`}
                 />
 
-                {/* Subtle card vignette shadow */}
+                {/* Card Vignette Shadow */}
                 <div
                   className={`absolute inset-0 transition-opacity duration-300 ${
                     isCenter
-                      ? 'bg-gradient-to-t from-black/80 via-transparent to-black/20'
+                      ? 'bg-gradient-to-t from-black/85 via-black/10 to-black/20'
                       : 'bg-black/30'
                   }`}
                 />
 
-                {/* Floating Bookmark Toggle Button on Active Card */}
+                {/* Active Card Bottom Overlay (Editorial Title & Specs) */}
                 {isCenter && (
-                  <button
-                    type="button"
-                    onClick={(e) => toggleBookmark(e, itemId)}
-                    aria-label="Bookmark photo"
-                    className="absolute top-3 right-3 sm:top-4 sm:right-4 z-40 w-9 h-9 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-black/60 hover:bg-black/85 text-white backdrop-blur-md border border-white/20 flex items-center justify-center shadow-lg transition-all active:scale-90 group/btn"
-                  >
-                    <Bookmark
-                      className={`w-4 h-4 transition-all duration-300 ${
-                        isBookmarked
-                          ? 'fill-amber-400 text-amber-400 scale-110'
-                          : 'text-neutral-200 group-hover/btn:scale-110'
-                      }`}
-                    />
-                  </button>
-                )}
-
-                {/* Active Card Bottom Overlay */}
-                {isCenter && (
-                  <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5 text-white transition-opacity duration-300">
-                    <div className="flex items-center justify-between mb-1">
-                      <span className="text-[10px] uppercase font-mono tracking-widest text-neutral-300">
+                  <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6 lg:p-7 text-white transition-opacity duration-300">
+                    <div className="flex items-center justify-between mb-1.5">
+                      <span className="text-[10px] sm:text-[11px] uppercase font-mono tracking-widest text-neutral-300">
                         {item.category || 'Editorial Series'}
                       </span>
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                     </div>
-                    <h3 className="text-sm sm:text-base font-bold truncate leading-tight">
-                      {item.title || 'Monochrome Narrative'}
+                    <h3 className="text-base sm:text-lg lg:text-xl font-bold truncate leading-tight">
+                      {item.title || 'Verve Autumn Campaign'}
                     </h3>
-                    <p className="text-[11px] text-neutral-300 font-light truncate mt-0.5">
-                      {item.cameraInfo || 'Leica M11-P • 50mm f/0.95 ASPH'}
+                    <p className="text-xs sm:text-sm text-neutral-300 font-light truncate mt-1">
+                      {item.cameraInfo || 'Fujifilm GFX 100 II • GF 110mm f/2 • ISO 100'}
                     </p>
                   </div>
                 )}
 
                 {/* Active Card Quick Expand Prompt */}
                 {isCenter && (
-                  <div className="absolute top-3 left-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-                    <span className="px-2 py-1 rounded-lg bg-black/60 backdrop-blur-sm text-[9px] font-mono uppercase tracking-wider text-white border border-white/20 flex items-center gap-1">
-                      <Maximize2 className="w-3 h-3" />
-                      <span>View</span>
+                  <div className="absolute top-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                    <span className="px-2.5 py-1.5 rounded-lg bg-black/60 backdrop-blur-sm text-[10px] font-mono uppercase tracking-wider text-white border border-white/20 flex items-center gap-1.5">
+                      <Maximize2 className="w-3.5 h-3.5" />
+                      <span>Full View</span>
                     </span>
                   </div>
                 )}
@@ -240,18 +248,18 @@ export const CoverFlowCarousel = ({
 
       {/* Navigation Controls & Dot Indicators */}
       {showControls && (
-        <div className="relative z-40 mt-3 sm:mt-5 flex items-center justify-center gap-4">
+        <div className="relative z-40 mt-4 sm:mt-6 flex items-center justify-center gap-4">
           <button
             type="button"
             onClick={handlePrev}
             aria-label="Previous image"
-            className="w-9 h-9 rounded-full bg-neutral-200 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 text-neutral-700 dark:text-neutral-200 hover:text-black dark:hover:text-white hover:bg-neutral-300 dark:hover:bg-neutral-800 flex items-center justify-center transition-all active:scale-95 shadow-sm"
+            className="w-10 h-10 rounded-full bg-neutral-200 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 text-neutral-700 dark:text-neutral-200 hover:text-black dark:hover:text-white hover:bg-neutral-300 dark:hover:bg-neutral-800 flex items-center justify-center transition-all active:scale-95 shadow-sm"
           >
             <ChevronLeft className="w-4 h-4" />
           </button>
 
           {/* Bullet Dot Indicators */}
-          <div className="flex items-center gap-1.5">
+          <div className="flex items-center gap-2">
             {items.map((_, idx) => (
               <button
                 key={idx}
@@ -260,7 +268,7 @@ export const CoverFlowCarousel = ({
                 aria-label={`Go to slide ${idx + 1}`}
                 className={`transition-all duration-300 rounded-full ${
                   idx === activeIndex
-                    ? 'w-6 h-2 bg-neutral-900 dark:bg-white'
+                    ? 'w-7 h-2 bg-neutral-900 dark:bg-white'
                     : 'w-2 h-2 bg-neutral-300 dark:bg-neutral-700 hover:bg-neutral-500'
                 }`}
               />
@@ -271,7 +279,7 @@ export const CoverFlowCarousel = ({
             type="button"
             onClick={handleNext}
             aria-label="Next image"
-            className="w-9 h-9 rounded-full bg-neutral-200 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 text-neutral-700 dark:text-neutral-200 hover:text-black dark:hover:text-white hover:bg-neutral-300 dark:hover:bg-neutral-800 flex items-center justify-center transition-all active:scale-95 shadow-sm"
+            className="w-10 h-10 rounded-full bg-neutral-200 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 text-neutral-700 dark:text-neutral-200 hover:text-black dark:hover:text-white hover:bg-neutral-300 dark:hover:bg-neutral-800 flex items-center justify-center transition-all active:scale-95 shadow-sm"
           >
             <ChevronRight className="w-4 h-4" />
           </button>
