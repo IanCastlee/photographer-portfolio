@@ -21,16 +21,16 @@ export const PortfolioSection = ({
   const coverFlowItems = filteredProjects.length > 0 ? filteredProjects : featuredSeries;
 
   return (
-    <section id="works" className="py-20 sm:py-28 border-t border-neutral-200 dark:border-neutral-800/80">
+    <section id="works" className="relative min-h-screen flex flex-col justify-center pt-20 pb-6 sm:pt-24 sm:pb-8 border-t border-neutral-200 dark:border-neutral-800/80 overflow-hidden">
       {/* Header Container (Constrained for optimal readability) */}
-      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16 mb-8 sm:mb-12">
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16 mb-3 sm:mb-5 w-full">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 sm:gap-6">
           <div>
-            <SectionEyebrow>Selected Works</SectionEyebrow>
-            <Heading level={2}>
+            <SectionEyebrow className="mb-1 text-[11px]">Selected Works</SectionEyebrow>
+            <Heading level={2} className="text-2xl sm:text-3xl lg:text-4xl">
               Browse My Latest Work
             </Heading>
-            <Paragraph size="md" muted className="mt-3 max-w-xl">
+            <Paragraph size="sm" muted className="mt-1 sm:mt-1.5 max-w-xl text-xs sm:text-sm">
               A curated archive of commercial campaigns, high-fashion editorials, architectural perspectives, and intimate portraiture.
             </Paragraph>
           </div>

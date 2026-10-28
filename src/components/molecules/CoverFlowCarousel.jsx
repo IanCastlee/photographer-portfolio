@@ -137,8 +137,8 @@ export const CoverFlowCarousel = ({
         </button>
       </div>
 
-      {/* Maximized-Width 3D Cover Flow Cards Canvas */}
-      <div className="relative w-full h-[440px] sm:h-[520px] md:h-[600px] lg:h-[680px] xl:h-[720px] flex items-center justify-center">
+      {/* Maximized 3D Cover Flow Cards Canvas (Screen-height optimized) */}
+      <div className="relative w-full h-[46vh] sm:h-[50vh] md:h-[54vh] lg:h-[56vh] min-h-[340px] max-h-[520px] flex items-center justify-center">
         {items.map((item, idx) => {
           // Circular offset calculation
           let offset = idx - activeIndex;
@@ -160,7 +160,7 @@ export const CoverFlowCarousel = ({
 
           if (isCenter) {
             translateX = 0;
-            scale = 1.06;
+            scale = 1.05;
             opacity = 1;
             zIndex = 30;
           } else if (isImmediate) {
@@ -192,11 +192,11 @@ export const CoverFlowCarousel = ({
                 isCenter ? 'cursor-pointer' : 'hover:opacity-90 hover:scale-[0.93]'
               }`}
             >
-              {/* Card Shell — Wide and tall editorial proportions */}
+              {/* Card Shell — Viewport-height constrained so it never gets cut off at top or bottom */}
               <div
-                className={`relative w-[260px] sm:w-[320px] md:w-[380px] lg:w-[440px] xl:w-[480px] 2xl:w-[500px] aspect-[3/4] overflow-hidden transition-all duration-500 ${
+                className={`relative h-[42vh] sm:h-[46vh] md:h-[49vh] lg:h-[51vh] min-h-[300px] max-h-[470px] aspect-[3/4] w-auto overflow-hidden transition-all duration-500 ${
                   isCenter
-                    ? 'rounded-3xl border-4 border-neutral-900 dark:border-white shadow-[0_30px_70px_rgba(0,0,0,0.65)]'
+                    ? 'rounded-3xl border-4 border-neutral-900 dark:border-white shadow-[0_25px_60px_rgba(0,0,0,0.65)]'
                     : 'rounded-2xl border border-neutral-300 dark:border-white/10 shadow-xl'
                 }`}
               >
@@ -223,17 +223,17 @@ export const CoverFlowCarousel = ({
 
                 {/* Active Card Bottom Overlay (Editorial Title & Specs) */}
                 {isCenter && (
-                  <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6 lg:p-7 text-white transition-opacity duration-300">
-                    <div className="flex items-center justify-between mb-1.5">
+                  <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5 text-white transition-opacity duration-300">
+                    <div className="flex items-center justify-between mb-1">
                       <span className="text-[10px] sm:text-[11px] uppercase font-mono tracking-widest text-neutral-300">
                         {item.category || 'Editorial Series'}
                       </span>
-                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                     </div>
-                    <h3 className="text-base sm:text-lg lg:text-xl font-bold truncate leading-tight">
+                    <h3 className="text-sm sm:text-base lg:text-lg font-bold truncate leading-tight">
                       {item.title || 'Verve Autumn Campaign'}
                     </h3>
-                    <p className="text-xs sm:text-sm text-neutral-300 font-light truncate mt-1">
+                    <p className="text-[11px] sm:text-xs text-neutral-300 font-light truncate mt-0.5">
                       {item.cameraInfo || 'Fujifilm GFX 100 II • GF 110mm f/2 • ISO 100'}
                     </p>
                   </div>
@@ -241,8 +241,8 @@ export const CoverFlowCarousel = ({
 
                 {/* Active Card Quick Expand Prompt */}
                 {isCenter && (
-                  <div className="absolute top-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-                    <span className="px-2.5 py-1.5 rounded-lg bg-black/60 backdrop-blur-sm text-[10px] font-mono uppercase tracking-wider text-white border border-white/20 flex items-center gap-1.5">
+                  <div className="absolute top-3.5 left-3.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                    <span className="px-2.5 py-1 rounded-lg bg-black/60 backdrop-blur-sm text-[10px] font-mono uppercase tracking-wider text-white border border-white/20 flex items-center gap-1.5">
                       <Maximize2 className="w-3.5 h-3.5" />
                       <span>Full View</span>
                     </span>
@@ -256,7 +256,7 @@ export const CoverFlowCarousel = ({
 
       {/* Navigation Controls & Dot Indicators */}
       {showControls && (
-        <div className="relative z-40 mt-4 sm:mt-6 flex items-center justify-center gap-4">
+        <div className="relative z-40 mt-3 sm:mt-4 flex items-center justify-center gap-4">
           <button
             type="button"
             onClick={handlePrev}
