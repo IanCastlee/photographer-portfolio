@@ -137,8 +137,8 @@ export const CoverFlowCarousel = ({
         </button>
       </div>
 
-      {/* Maximized 3D Cover Flow Cards Canvas (Screen-height optimized) */}
-      <div className="relative w-full h-[46vh] sm:h-[50vh] md:h-[54vh] lg:h-[56vh] min-h-[340px] max-h-[520px] flex items-center justify-center">
+      {/* Maximized 3D Cover Flow Cards Canvas */}
+      <div className="relative w-full h-[420px] sm:h-[480px] md:h-[540px] lg:h-[590px] xl:h-[620px] flex items-center justify-center">
         {items.map((item, idx) => {
           // Circular offset calculation
           let offset = idx - activeIndex;
@@ -192,9 +192,9 @@ export const CoverFlowCarousel = ({
                 isCenter ? 'cursor-pointer' : 'hover:opacity-90 hover:scale-[0.93]'
               }`}
             >
-              {/* Card Shell — Viewport-height constrained so it never gets cut off at top or bottom */}
+              {/* Card Shell — Grand editorial proportions, just slightly smaller than the previous to fit screen */}
               <div
-                className={`relative h-[42vh] sm:h-[46vh] md:h-[49vh] lg:h-[51vh] min-h-[300px] max-h-[470px] aspect-[3/4] w-auto overflow-hidden transition-all duration-500 ${
+                className={`relative w-[240px] sm:w-[290px] md:w-[340px] lg:w-[380px] xl:w-[415px] 2xl:w-[435px] aspect-[3/4] overflow-hidden transition-all duration-500 ${
                   isCenter
                     ? 'rounded-3xl border-4 border-neutral-900 dark:border-white shadow-[0_25px_60px_rgba(0,0,0,0.65)]'
                     : 'rounded-2xl border border-neutral-300 dark:border-white/10 shadow-xl'
