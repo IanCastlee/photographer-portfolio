@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUpRight, Instagram, Twitter, Globe } from 'lucide-react';
+import { ArrowUpRight, Instagram, Twitter, Globe, Camera } from 'lucide-react';
 import { Button } from '../atoms/Button';
 import { SectionEyebrow } from '../atoms/Typography';
 import { ViewfinderOverlay } from '../atoms/ViewfinderOverlay';
@@ -21,7 +21,7 @@ export const HeroSection = ({ profile, featuredProjects = [] }) => {
       {/* Background ambient glow */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[320px] bg-neutral-500/5 dark:bg-white/[0.02] rounded-full blur-3xl pointer-events-none" />
 
-      {/* Clean Minimal Viewfinder Overlay (Distracting telemetry & cut-squares removed) */}
+      {/* Subtle Viewfinder Wireframe Squares & Cut-Square System */}
       <ViewfinderOverlay />
 
       <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16 w-full my-auto">
@@ -96,80 +96,66 @@ export const HeroSection = ({ profile, featuredProjects = [] }) => {
             </div>
           </div>
 
-          {/* Right Featured Visual — Cinematic Editorial Master Frame */}
+          {/* Right Featured Visual Collage (Photographer holding camera + Leica metadata) */}
           <div className="lg:col-span-5 relative flex items-center justify-center">
-            <div className="relative mx-auto w-full max-w-sm sm:max-w-md lg:max-w-[440px] xl:max-w-[470px]">
-              {/* Multi-tone Ambient Backlight Aura */}
-              <div className="absolute -inset-2 sm:-inset-3 rounded-[2.5rem] bg-gradient-to-tr from-cyan-500/15 via-white/[0.04] to-amber-500/15 blur-2xl opacity-60 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-
-              {/* Precision Master Chassis with Beveled Double-Border */}
+            <div className="relative mx-auto w-full max-w-sm sm:max-w-md lg:max-w-[440px] xl:max-w-[480px] 2xl:max-w-[520px]">
+              {/* Primary portrait shot */}
               <div
                 onClick={() => featuredProjects[0] && openLightbox(featuredProjects[0])}
-                className="group relative rounded-[2rem] p-2.5 sm:p-3 bg-gradient-to-b from-neutral-800/90 via-neutral-900/95 to-black/95 dark:from-neutral-900/90 dark:via-[#111113]/95 dark:to-black/95 border border-neutral-300 dark:border-white/15 shadow-[0_30px_90px_rgba(0,0,0,0.7),0_0_40px_rgba(255,255,255,0.03)] backdrop-blur-2xl cursor-pointer transition-transform duration-500 hover:-translate-y-1"
+                className="group relative rounded-2xl overflow-hidden aspect-[3/4] max-h-[55vh] sm:max-h-[60vh] lg:max-h-[62vh] xl:max-h-[66vh] w-full bg-neutral-900 border border-neutral-300 dark:border-white/10 shadow-2xl cursor-pointer"
               >
-                {/* Inner Card Frame */}
-                <div className="relative rounded-2xl overflow-hidden aspect-[3/4] max-h-[56vh] sm:max-h-[60vh] lg:max-h-[64vh] w-full bg-neutral-950">
-                  {/* Optical Lens Glass Sheen Sweep Effect on Hover */}
-                  <div className="absolute inset-0 z-20 pointer-events-none overflow-hidden">
-                    <div className="w-[200%] h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 -translate-x-[200%] group-hover:translate-x-[200%] transition-transform duration-1000 ease-in-out" />
+                {/* Live Optical Corner Focus Brackets */}
+                <div className="absolute top-3.5 left-3.5 w-4 h-4 border-t-2 border-l-2 border-white/40 group-hover:border-white group-hover:scale-110 transition-all z-20 pointer-events-none" />
+                <div className="absolute top-3.5 right-3.5 w-4 h-4 border-t-2 border-r-2 border-white/40 group-hover:border-white group-hover:scale-110 transition-all z-20 pointer-events-none" />
+                <div className="absolute bottom-3.5 left-3.5 w-4 h-4 border-b-2 border-l-2 border-white/40 group-hover:border-white group-hover:scale-110 transition-all z-20 pointer-events-none" />
+                <div className="absolute bottom-3.5 right-3.5 w-4 h-4 border-b-2 border-r-2 border-white/40 group-hover:border-white group-hover:scale-110 transition-all z-20 pointer-events-none" />
+
+                {/* Viewfinder Target Hover Reticle */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 z-20 pointer-events-none">
+                  <div className="relative w-16 h-16 rounded-full border border-white/60 flex items-center justify-center backdrop-blur-[3px] bg-black/30 shadow-2xl scale-90 group-hover:scale-100 transition-transform">
+                    <span className="text-white text-xs font-mono font-bold">⌖</span>
+                    <span className="absolute -bottom-6 text-[9px] font-mono tracking-widest uppercase text-white/90 bg-black/75 px-2 py-0.5 rounded-full border border-white/20 whitespace-nowrap">
+                      EXPAND VIEW
+                    </span>
                   </div>
+                </div>
 
-                  {/* Corner Precision Optical L-Brackets */}
-                  <div className="absolute top-3 left-3 w-4 h-4 border-t-2 border-l-2 border-white/40 group-hover:border-white group-hover:scale-110 transition-all z-20 pointer-events-none" />
-                  <div className="absolute top-3 right-3 w-4 h-4 border-t-2 border-r-2 border-white/40 group-hover:border-white group-hover:scale-110 transition-all z-20 pointer-events-none" />
-                  <div className="absolute bottom-3 left-3 w-4 h-4 border-b-2 border-l-2 border-white/40 group-hover:border-white group-hover:scale-110 transition-all z-20 pointer-events-none" />
-                  <div className="absolute bottom-3 right-3 w-4 h-4 border-b-2 border-r-2 border-white/40 group-hover:border-white group-hover:scale-110 transition-all z-20 pointer-events-none" />
-
-                  {/* Top Live Sensor Pill Badge */}
-                  <div className="absolute top-3.5 inset-x-3.5 flex items-center justify-between z-20 pointer-events-none">
-                    <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/15 text-[10px] font-mono tracking-wider text-neutral-200">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                      <span>MASTER ARCHIVE // NOCTILUX 50MM</span>
-                    </div>
-
-                    <div className="w-7 h-7 rounded-full bg-black/60 backdrop-blur-md border border-white/15 flex items-center justify-center text-white/80 group-hover:text-white group-hover:scale-110 transition-all">
-                      <ArrowUpRight className="w-3.5 h-3.5" />
-                    </div>
+                <img
+                  src={profile.cameraHolding}
+                  alt={profile.name}
+                  className="w-full h-full object-cover filter grayscale contrast-125 transition-all duration-700 group-hover:scale-105 group-hover:contrast-100"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
+                <div className="absolute bottom-5 left-5 right-5 text-white z-10">
+                  <div className="flex items-center gap-2 mb-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                    <span className="text-[10px] uppercase font-mono tracking-widest text-neutral-300">
+                      Signature Series • Master File
+                    </span>
                   </div>
+                  <h2 className="text-base sm:text-lg font-bold">The Monochrome Narrative</h2>
+                  <p className="text-[11px] text-neutral-400 mt-0.5">Leica M11-P • 50mm f/0.95 ASPH</p>
+                </div>
+              </div>
 
-                  {/* Center Target Focus Crosshair on Hover */}
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 z-20 pointer-events-none">
-                    <div className="relative w-16 h-16 rounded-full border border-white/50 flex items-center justify-center backdrop-blur-[2px] bg-black/40 shadow-2xl scale-90 group-hover:scale-100 transition-transform">
-                      <span className="text-white text-base font-mono leading-none">⌖</span>
-                      <span className="absolute -bottom-7 text-[9px] font-mono tracking-widest uppercase text-white/90 bg-black/80 px-2.5 py-0.5 rounded-full border border-white/20 whitespace-nowrap">
-                        EXPAND VIEW
-                      </span>
-                    </div>
+              {/* Floating secondary badge/preview card */}
+              <div className="absolute -bottom-4 -left-4 sm:-bottom-5 sm:-left-6 bg-neutral-900/95 text-white backdrop-blur-xl border border-white/10 p-3 sm:p-3.5 rounded-xl shadow-2xl max-w-[190px] sm:max-w-[210px] hidden sm:block">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-8 h-8 rounded-lg bg-neutral-800 flex items-center justify-center shrink-0">
+                    <Camera className="w-4 h-4 text-neutral-300" />
                   </div>
-
-                  {/* High-Impact Master Image */}
-                  <img
-                    src={profile.cameraHolding}
-                    alt={profile.name}
-                    className="w-full h-full object-cover filter grayscale contrast-125 brightness-95 transition-all duration-700 group-hover:scale-105 group-hover:contrast-115 group-hover:brightness-105"
-                  />
-
-                  {/* Vignette Shadow Gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-black/20 z-10" />
-
-                  {/* Bottom Integrated Editorial Glass Card (Clean & uncluttered) */}
-                  <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5 text-white z-20">
-                    <div className="flex items-center gap-2 mb-1.5">
-                      <span className="text-[10px] uppercase font-mono tracking-widest text-neutral-300 font-semibold">
-                        Signature Series • Master File
-                      </span>
-                    </div>
-                    <h2 className="text-lg sm:text-xl font-bold tracking-tight">
-                      The Monochrome Narrative
-                    </h2>
-                    <div className="flex items-center gap-2 text-[11px] font-mono text-neutral-400 mt-1">
-                      <span>Leica M11-P</span>
-                      <span>•</span>
-                      <span>50mm f/0.95 ASPH</span>
-                      <span>•</span>
-                      <span className="text-amber-400/90">60.3 MP</span>
-                    </div>
+                  <div>
+                    <span className="block text-[10px] font-mono text-neutral-400">Master Kit</span>
+                    <span className="text-xs font-bold text-neutral-200">Medium Format & Prime Glass</span>
                   </div>
+                </div>
+              </div>
+
+              {/* Floating experience badge */}
+              <div className="absolute -top-4 right-0 sm:-top-5 sm:right-1 bg-white dark:bg-[#141416] text-neutral-900 dark:text-white border border-neutral-300 dark:border-white/10 px-3.5 py-2.5 rounded-xl shadow-xl hidden sm:block">
+                <div className="text-center">
+                  <span className="block text-xl font-bold font-mono">12+</span>
+                  <span className="text-[9px] uppercase tracking-wider text-neutral-500 dark:text-neutral-400 font-mono">Years Behind Lens</span>
                 </div>
               </div>
             </div>
