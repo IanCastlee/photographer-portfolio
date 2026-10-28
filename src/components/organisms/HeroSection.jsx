@@ -28,12 +28,6 @@ export const HeroSection = ({ profile, featuredProjects = [] }) => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Left Text Column */}
           <div className="lg:col-span-7 flex flex-col items-start z-10">
-            {/* Availability status badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-200/60 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 text-[11px] font-mono mb-3 lg:mb-4">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span className="text-neutral-700 dark:text-neutral-300">{profile.availability}</span>
-            </div>
-
             <SectionEyebrow className="mb-2 lg:mb-2 text-[11px]">
               Visual Storyteller • Based in {profile.location}
             </SectionEyebrow>
