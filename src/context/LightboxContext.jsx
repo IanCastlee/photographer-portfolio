@@ -1,18 +1,27 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const LightboxContext = createContext();
 
 export const LightboxProvider = ({ children, projects = [] }) => {
   const [selectedProject, setSelectedProject] = useState(null);
 
+  useEffect(() => {
+    if (selectedProject) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [selectedProject]);
+
   const openLightbox = (project) => {
     setSelectedProject(project);
-    document.body.style.overflow = 'hidden';
   };
 
   const closeLightbox = () => {
     setSelectedProject(null);
-    document.body.style.overflow = 'auto';
   };
 
   const nextImage = () => {

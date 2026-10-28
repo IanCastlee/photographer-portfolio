@@ -1,28 +1,26 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Bookmark, ChevronLeft, ChevronRight, Maximize2, Sparkles } from 'lucide-react';
+import { Bookmark, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
 import { useLightbox } from '../../context/LightboxContext';
 
 /**
  * CoverFlowCarousel
- * High-fashion 3D Cover Flow / Center-Stacked Photo Carousel.
- * Center card is elevated with a thick rounded border, deep drop-shadow, and active focus.
- * Side cards scale down with subtle opacity and edge vignette fade.
- * Fully responsive on Mobile, Tablet, and Desktop with drag/swipe and click-to-center support.
+ * 3D Cover Flow / Center-Stacked Photo Showcase.
+ * - Center elevated card with thick border (dark/light contrast), rounded corners, deep drop shadow.
+ * - Side cards stepped down in scale and opacity, with outer cards fading into edge vignette masks.
+ * - Non-blocking vertical scroll (touch-pan-y) for flawless mobile, tablet, and desktop scrolling.
  */
 export const CoverFlowCarousel = ({
   items = [],
   className = '',
-  aspectRatio = 'portrait', // 'portrait' (3/4 or 4/5)
   showControls = true,
   autoPlay = false,
-  autoPlayInterval = 4500,
-  variant = 'hero', // 'hero' (contained) or 'full' (wide 5-card spread)
+  autoPlayInterval = 5000,
 }) => {
   const { openLightbox } = useLightbox();
   const [activeIndex, setActiveIndex] = useState(() => Math.floor(items.length / 2));
   const [bookmarkedIds, setBookmarkedIds] = useState({});
-  const [touchStart, setTouchStart] = useState(null);
-  const [touchEnd, setTouchEnd] = useState(null);
+  const touchStartRef = useRef({ x: 0, y: 0 });
+  const touchEndRef = useRef({ x: 0, y: 0 });
   const autoPlayRef = useRef(null);
 
   const total = items.length;
@@ -55,28 +53,39 @@ export const CoverFlowCarousel = ({
     }));
   };
 
-  // Touch Swipe Handlers for Mobile & Tablet
+  // Safe Touch Handlers — allows vertical page scrolling without interception
   const onTouchStart = (e) => {
-    setTouchEnd(null);
-    setTouchStart(e.targetTouches[0].clientX);
+    touchStartRef.current = {
+      x: e.targetTouches[0].clientX,
+      y: e.targetTouches[0].clientY,
+    };
+    touchEndRef.current = {
+      x: e.targetTouches[0].clientX,
+      y: e.targetTouches[0].clientY,
+    };
   };
 
   const onTouchMove = (e) => {
-    setTouchEnd(e.targetTouches[0].clientX);
+    touchEndRef.current = {
+      x: e.targetTouches[0].clientX,
+      y: e.targetTouches[0].clientY,
+    };
   };
 
   const onTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
-    const distance = touchStart - touchEnd;
-    const minSwipeDistance = 45;
-    if (distance > minSwipeDistance) {
-      handleNext();
-    } else if (distance < -minSwipeDistance) {
-      handlePrev();
+    const deltaX = touchStartRef.current.x - touchEndRef.current.x;
+    const deltaY = touchStartRef.current.y - touchEndRef.current.y;
+    // Only trigger horizontal navigation if horizontal gesture is dominant
+    if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 40) {
+      if (deltaX > 0) {
+        handleNext();
+      } else {
+        handlePrev();
+      }
     }
   };
 
-  // Optional Autoplay
+  // Autoplay (optional)
   useEffect(() => {
     if (!autoPlay || total <= 1) return;
     autoPlayRef.current = setInterval(() => {
@@ -89,37 +98,19 @@ export const CoverFlowCarousel = ({
 
   return (
     <div
-      className={`relative w-full select-none ${className}`}
+      className={`relative w-full touch-pan-y select-none overflow-hidden ${className}`}
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
     >
-      {/* Edge Vignette Gradient Fades (Creates the ethereal fade seen on left/right in screenshot) */}
-      <div className="absolute left-0 inset-y-0 w-8 sm:w-16 lg:w-24 bg-gradient-to-r from-light-bg via-light-bg/80 dark:from-[#0b0b0c] dark:via-[#0b0b0c]/80 to-transparent pointer-events-none z-30 transition-colors" />
-      <div className="absolute right-0 inset-y-0 w-8 sm:w-16 lg:w-24 bg-gradient-to-l from-light-bg via-light-bg/80 dark:from-[#0b0b0c] dark:via-[#0b0b0c]/80 to-transparent pointer-events-none z-30 transition-colors" />
+      {/* Edge Vignette Gradient Fades */}
+      <div className="absolute left-0 inset-y-0 w-8 sm:w-16 lg:w-28 bg-gradient-to-r from-[#f8f9fa] dark:from-[#0b0b0c] to-transparent pointer-events-none z-30 transition-colors" />
+      <div className="absolute right-0 inset-y-0 w-8 sm:w-16 lg:w-28 bg-gradient-to-l from-[#f8f9fa] dark:from-[#0b0b0c] to-transparent pointer-events-none z-30 transition-colors" />
 
-      {/* Top Right Floating Bookmark Button (Matches screenshot) */}
-      <div className="absolute top-2 right-2 sm:top-4 sm:right-4 z-40">
-        <button
-          type="button"
-          onClick={(e) => toggleBookmark(e, items[activeIndex]?.id || activeIndex)}
-          aria-label="Bookmark photo"
-          className="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-neutral-900/60 dark:bg-neutral-800/80 hover:bg-neutral-900 dark:hover:bg-neutral-700 text-white backdrop-blur-md border border-white/15 flex items-center justify-center shadow-lg transition-all active:scale-95 group"
-        >
-          <Bookmark
-            className={`w-4 h-4 transition-all duration-300 ${
-              bookmarkedIds[items[activeIndex]?.id || activeIndex]
-                ? 'fill-amber-400 text-amber-400 scale-110'
-                : 'text-neutral-200 group-hover:scale-110'
-            }`}
-          />
-        </button>
-      </div>
-
-      {/* 3D Cover Flow Cards Container */}
-      <div className="relative w-full h-[360px] sm:h-[420px] md:h-[460px] lg:h-[480px] flex items-center justify-center overflow-hidden">
+      {/* 3D Cover Flow Cards Canvas */}
+      <div className="relative w-full h-[400px] sm:h-[460px] md:h-[500px] lg:h-[520px] flex items-center justify-center">
         {items.map((item, idx) => {
-          // Calculate circular distance from activeIndex
+          // Circular offset calculation
           let offset = idx - activeIndex;
           if (offset < -Math.floor(total / 2)) offset += total;
           if (offset > Math.floor(total / 2)) offset -= total;
@@ -131,15 +122,14 @@ export const CoverFlowCarousel = ({
 
           if (isHidden) return null;
 
-          // Compute responsive horizontal displacement (in px or %)
-          // Tighter spacing on mobile, expanded on desktop
-          let translateX = offset * 42; // percentage offset
+          // Responsive percentage displacement
+          let translateX = offset * 42;
           let scale = 1;
           let opacity = 1;
           let zIndex = 20;
 
           if (isCenter) {
-            scale = 1.08;
+            scale = 1.06;
             opacity = 1;
             zIndex = 30;
           } else if (isImmediate) {
@@ -152,9 +142,12 @@ export const CoverFlowCarousel = ({
             zIndex = 10;
           }
 
+          const itemId = item.id || idx;
+          const isBookmarked = !!bookmarkedIds[itemId];
+
           return (
             <div
-              key={item.id || idx}
+              key={itemId}
               onClick={() => handleSelect(idx)}
               style={{
                 transform: `translateX(${translateX}%) scale(${scale})`,
@@ -162,17 +155,15 @@ export const CoverFlowCarousel = ({
                 opacity,
               }}
               className={`absolute transition-all duration-500 ease-out cursor-pointer group ${
-                isCenter
-                  ? 'cursor-pointer'
-                  : 'hover:opacity-90 hover:scale-[0.92]'
+                isCenter ? 'cursor-pointer' : 'hover:opacity-90 hover:scale-[0.92]'
               }`}
             >
               {/* Card Shell */}
               <div
-                className={`relative w-[210px] sm:w-[250px] md:w-[280px] lg:w-[300px] aspect-[3/4] overflow-hidden transition-all duration-500 ${
+                className={`relative w-[210px] sm:w-[260px] md:w-[290px] lg:w-[320px] aspect-[3/4] overflow-hidden transition-all duration-500 ${
                   isCenter
-                    ? 'rounded-3xl border-4 border-neutral-900 dark:border-white shadow-[0_20px_50px_rgba(0,0,0,0.6)]'
-                    : 'rounded-2xl border border-neutral-300 dark:border-white/10 shadow-xl'
+                    ? 'rounded-3xl border-4 border-neutral-900 dark:border-white shadow-[0_25px_60px_rgba(0,0,0,0.55)]'
+                    : 'rounded-2xl border border-neutral-300 dark:border-white/10 shadow-lg'
                 }`}
               >
                 {/* Photo Image */}
@@ -182,21 +173,39 @@ export const CoverFlowCarousel = ({
                   loading="lazy"
                   className={`w-full h-full object-cover transition-transform duration-700 ${
                     isCenter
-                      ? 'contrast-105 group-hover:scale-105 filter'
+                      ? 'contrast-105 group-hover:scale-105'
                       : 'contrast-95 brightness-95'
                   }`}
                 />
 
-                {/* Subtle vignette gradient on card */}
+                {/* Subtle card vignette shadow */}
                 <div
                   className={`absolute inset-0 transition-opacity duration-300 ${
                     isCenter
-                      ? 'bg-gradient-to-t from-black/80 via-transparent to-black/10'
-                      : 'bg-black/25'
+                      ? 'bg-gradient-to-t from-black/80 via-transparent to-black/20'
+                      : 'bg-black/30'
                   }`}
                 />
 
-                {/* Center Card Metadata Overlay */}
+                {/* Floating Bookmark Toggle Button on Active Card */}
+                {isCenter && (
+                  <button
+                    type="button"
+                    onClick={(e) => toggleBookmark(e, itemId)}
+                    aria-label="Bookmark photo"
+                    className="absolute top-3 right-3 sm:top-4 sm:right-4 z-40 w-9 h-9 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-black/60 hover:bg-black/85 text-white backdrop-blur-md border border-white/20 flex items-center justify-center shadow-lg transition-all active:scale-90 group/btn"
+                  >
+                    <Bookmark
+                      className={`w-4 h-4 transition-all duration-300 ${
+                        isBookmarked
+                          ? 'fill-amber-400 text-amber-400 scale-110'
+                          : 'text-neutral-200 group-hover/btn:scale-110'
+                      }`}
+                    />
+                  </button>
+                )}
+
+                {/* Active Card Bottom Overlay */}
                 {isCenter && (
                   <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5 text-white transition-opacity duration-300">
                     <div className="flex items-center justify-between mb-1">
@@ -214,7 +223,7 @@ export const CoverFlowCarousel = ({
                   </div>
                 )}
 
-                {/* Center Hover Expand Icon */}
+                {/* Active Card Quick Expand Prompt */}
                 {isCenter && (
                   <div className="absolute top-3 left-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
                     <span className="px-2 py-1 rounded-lg bg-black/60 backdrop-blur-sm text-[9px] font-mono uppercase tracking-wider text-white border border-white/20 flex items-center gap-1">

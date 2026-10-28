@@ -30,7 +30,6 @@ export const PortfolioTemplate = ({ data }) => {
         <HeroSection
           profile={data.profile}
           featuredProjects={data.projects.filter((p) => p.featured)}
-          featuredSeries={data.featuredSeries || []}
         />
 
         <PortfolioSection
