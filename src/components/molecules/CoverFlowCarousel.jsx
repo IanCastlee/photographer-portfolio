@@ -13,12 +13,13 @@ export const CoverFlowCarousel = ({
   items = [],
   className = '',
   showControls = true,
-  autoPlay = false,
-  autoPlayInterval = 5000,
+  autoPlay = true,
+  autoPlayInterval = 3500,
 }) => {
   const { openLightbox } = useLightbox();
   const [activeIndex, setActiveIndex] = useState(() => Math.floor(items.length / 2));
   const [bookmarkedIds, setBookmarkedIds] = useState({});
+  const [isHovered, setIsHovered] = useState(false);
   const touchStartRef = useRef({ x: 0, y: 0 });
   const touchEndRef = useRef({ x: 0, y: 0 });
   const autoPlayRef = useRef(null);
@@ -85,14 +86,19 @@ export const CoverFlowCarousel = ({
     }
   };
 
-  // Autoplay (optional)
+  // Auto-scroll loop with pause on hover and reset on interaction
   useEffect(() => {
-    if (!autoPlay || total <= 1) return;
+    if (!autoPlay || total <= 1 || isHovered) return;
     autoPlayRef.current = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % total);
     }, autoPlayInterval);
-    return () => clearInterval(autoPlayRef.current);
-  }, [autoPlay, total, autoPlayInterval]);
+
+    return () => {
+      if (autoPlayRef.current) {
+        clearInterval(autoPlayRef.current);
+      }
+    };
+  }, [autoPlay, total, autoPlayInterval, isHovered, activeIndex]);
 
   if (!items || items.length === 0) return null;
 
@@ -103,6 +109,8 @@ export const CoverFlowCarousel = ({
   return (
     <div
       className={`relative w-full touch-pan-y select-none overflow-hidden ${className}`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}

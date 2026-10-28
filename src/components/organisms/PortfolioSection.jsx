@@ -46,12 +46,13 @@ export const PortfolioSection = ({
         </div>
       </div>
 
-      {/* Maximized Full-Width 3D Cover Flow Carousel */}
+      {/* Maximized Full-Width 3D Cover Flow Carousel with Auto-Scroll */}
       <div className="w-full max-w-[1920px] mx-auto px-2 sm:px-6 lg:px-10">
         <CoverFlowCarousel
           items={coverFlowItems}
           showControls={true}
-          autoPlay={false}
+          autoPlay={true}
+          autoPlayInterval={3500}
         />
       </div>
     </section>
