@@ -110,21 +110,37 @@ export const HeroSection = ({ profile, featuredProjects = [] }) => {
                 onClick={() => featuredProjects[0] && openLightbox(featuredProjects[0])}
                 className="group relative rounded-2xl overflow-hidden aspect-[3/4] max-h-[55vh] sm:max-h-[60vh] lg:max-h-[62vh] xl:max-h-[66vh] w-full bg-neutral-900 border border-neutral-300 dark:border-white/10 shadow-2xl cursor-pointer"
               >
+                {/* Live Optical Corner Focus Brackets */}
+                <div className="absolute top-3.5 left-3.5 w-4 h-4 border-t-2 border-l-2 border-white/40 group-hover:border-white group-hover:scale-110 transition-all z-20 pointer-events-none" />
+                <div className="absolute top-3.5 right-3.5 w-4 h-4 border-t-2 border-r-2 border-white/40 group-hover:border-white group-hover:scale-110 transition-all z-20 pointer-events-none" />
+                <div className="absolute bottom-3.5 left-3.5 w-4 h-4 border-b-2 border-l-2 border-white/40 group-hover:border-white group-hover:scale-110 transition-all z-20 pointer-events-none" />
+                <div className="absolute bottom-3.5 right-3.5 w-4 h-4 border-b-2 border-r-2 border-white/40 group-hover:border-white group-hover:scale-110 transition-all z-20 pointer-events-none" />
+
+                {/* Viewfinder Target Hover Reticle */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 z-20 pointer-events-none">
+                  <div className="relative w-16 h-16 rounded-full border border-white/60 flex items-center justify-center backdrop-blur-[3px] bg-black/30 shadow-2xl scale-90 group-hover:scale-100 transition-transform">
+                    <span className="text-white text-xs font-mono font-bold">⌖</span>
+                    <span className="absolute -bottom-6 text-[9px] font-mono tracking-widest uppercase text-white/90 bg-black/75 px-2 py-0.5 rounded-full border border-white/20 whitespace-nowrap">
+                      EXPAND VIEW
+                    </span>
+                  </div>
+                </div>
+
                 <img
                   src={profile.cameraHolding}
                   alt={profile.name}
                   className="w-full h-full object-cover filter grayscale contrast-125 transition-all duration-700 group-hover:scale-105 group-hover:contrast-100"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
-                <div className="absolute bottom-5 left-5 right-5 text-white">
+                <div className="absolute bottom-5 left-5 right-5 text-white z-10">
                   <div className="flex items-center gap-2 mb-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-white" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                     <span className="text-[10px] uppercase font-mono tracking-widest text-neutral-300">
-                      Signature Series
+                      Signature Series • Master File
                     </span>
                   </div>
                   <h2 className="text-base sm:text-lg font-bold">The Monochrome Narrative</h2>
-                  <p className="text-[11px] text-neutral-400 mt-0.5">Leica M11-P • 50mm f/0.95</p>
+                  <p className="text-[11px] text-neutral-400 mt-0.5">Leica M11-P • 50mm f/0.95 ASPH</p>
                 </div>
               </div>
 

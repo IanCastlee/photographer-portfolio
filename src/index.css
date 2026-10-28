@@ -53,3 +53,42 @@
 .font-editorial {
   font-family: 'Playfair Display', Georgia, serif;
 }
+
+/* Cinematic Viewfinder & Lens HUD Animations */
+@keyframes reticleSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes reticleSpinRev {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+@keyframes laserSweep {
+  0% { transform: translateY(-100%); opacity: 0; }
+  30% { opacity: 0.6; }
+  70% { opacity: 0.6; }
+  100% { transform: translateY(1000%); opacity: 0; }
+}
+
+@keyframes focusPulse {
+  0%, 100% { transform: scale(1); opacity: 0.4; }
+  50% { transform: scale(1.04); opacity: 0.8; }
+}
+
+.animate-reticle-spin {
+  animation: reticleSpin 40s linear infinite;
+}
+
+.animate-reticle-rev {
+  animation: reticleSpinRev 30s linear infinite;
+}
+
+.animate-laser-sweep {
+  animation: laserSweep 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.animate-focus-pulse {
+  animation: focusPulse 3.5s ease-in-out infinite;
+}
