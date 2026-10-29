@@ -121,21 +121,21 @@ export const HeroSection = ({ profile, featuredProjects = [] }) => {
                   alt={profile.name}
                   className="w-full h-full object-cover filter grayscale contrast-125 transition-all duration-700 group-hover:scale-105 group-hover:contrast-100"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
-                <div className="absolute bottom-5 left-5 right-5 text-white z-10">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+                <div className="absolute bottom-6 left-6 right-6 text-white z-10">
                   <div className="flex items-center gap-2 mb-1.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                     <span className="text-[10px] uppercase font-mono tracking-widest text-neutral-300">
-                      Signature Series • Master File
+                      Signature Series • Anonymous
                     </span>
                   </div>
-                  <h2 className="text-base sm:text-lg font-bold">The Monochrome Narrative</h2>
+                  <h2 className="text-base sm:text-lg font-bold">The Shadow Portrait</h2>
                   <p className="text-[11px] text-neutral-400 mt-0.5">Leica M11-P • 50mm f/0.95 ASPH</p>
                 </div>
               </div>
 
               {/* Floating secondary badge/preview card */}
-              <div className="absolute -bottom-4 -left-4 sm:-bottom-5 sm:-left-6 bg-neutral-900/95 text-white backdrop-blur-xl border border-white/10 p-3 sm:p-3.5 rounded-xl shadow-2xl max-w-[190px] sm:max-w-[210px] hidden sm:block">
+              <div className="absolute -bottom-5 -left-6 sm:-bottom-6 sm:-left-8 bg-neutral-900/95 text-white backdrop-blur-xl border border-white/10 p-3 sm:p-3.5 rounded-xl shadow-2xl max-w-[190px] sm:max-w-[210px] hidden sm:block z-20">
                 <div className="flex items-center gap-2.5">
                   <div className="w-8 h-8 rounded-lg bg-neutral-800 flex items-center justify-center shrink-0">
                     <Camera className="w-4 h-4 text-neutral-300" />
