@@ -126,9 +126,8 @@ export const Navbar = ({ brandName = "PHOTOGRAPHER X" }) => {
           </Button>
         </div>
 
-        {/* Mobile menu button and theme toggle */}
-        <div className="flex sm:hidden items-center gap-2">
-          <ThemeToggle />
+        {/* Mobile menu button */}
+        <div className="flex sm:hidden items-center">
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -163,7 +162,16 @@ export const Navbar = ({ brandName = "PHOTOGRAPHER X" }) => {
               );
             })}
           </div>
-          <div className="pt-4 border-t border-neutral-200 dark:border-neutral-800">
+
+          {/* Theme Toggle row inside mobile menu */}
+          <div className="pt-4 border-t border-neutral-200 dark:border-neutral-800 flex items-center justify-between">
+            <span className="text-xs font-mono uppercase tracking-widest text-neutral-500 dark:text-neutral-400">
+              Appearance / Theme
+            </span>
+            <ThemeToggle />
+          </div>
+
+          <div className="pt-2">
             <Button
               variant="primary"
               size="md"
