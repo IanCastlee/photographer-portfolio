@@ -196,7 +196,7 @@ export const CoverFlowCarousel = ({
               <div
                 className={`relative w-[240px] sm:w-[290px] md:w-[340px] lg:w-[380px] xl:w-[415px] 2xl:w-[435px] aspect-[3/4] overflow-hidden transition-all duration-500 ${
                   isCenter
-                    ? 'rounded-3xl border-4 border-neutral-900 dark:border-white shadow-[0_25px_60px_rgba(0,0,0,0.65)]'
+                    ? 'rounded-3xl border-2 border-neutral-900 dark:border-white shadow-[0_25px_60px_rgba(0,0,0,0.65)]'
                     : 'rounded-2xl border border-neutral-300 dark:border-white/10 shadow-xl'
                 }`}
               >
