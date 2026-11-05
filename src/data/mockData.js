@@ -16,7 +16,7 @@ export const photographerData = {
     behindTheScenes:
       "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1000&q=80",
     cameraHolding:
-      "https://images.unsplash.com/photo-1509114397022-ed747cca3f65?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1554048612-b6a482bc67e5?auto=format&fit=crop&w=1000&q=80",
     contactEmail: "inquiries@johncarter.studio",
     contactPhone: "+1 (310) 892-4150",
     studioAddress: "740 Broadway, 9th Floor, New York, NY 10003",
