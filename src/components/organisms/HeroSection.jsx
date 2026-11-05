@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUpRight, Instagram, Twitter, Globe, Linkedin, Camera, Aperture, Sparkles } from 'lucide-react';
+import { ArrowUpRight, Instagram, Twitter, Globe, Linkedin } from 'lucide-react';
 import { SectionEyebrow } from '../atoms/Typography';
 import { useLightbox } from '../../context/LightboxContext';
 import hoodiePhotographerImg from '../../assets/hoodie-photographer.png';
@@ -23,19 +23,19 @@ export const HeroSection = ({ profile, featuredProjects = [] }) => {
       {/* ─── ATMOSPHERIC BACKGROUND SPOTLIGHT (Matches Reference Radial Glow) ─── */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {/* Center blue/cyan radial glow behind hoodie character */}
-        <div className="absolute top-[32%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] sm:w-[850px] h-[450px] sm:h-[580px] bg-[radial-gradient(ellipse_at_center,rgba(37,99,235,0.25),transparent_70%)] dark:bg-[radial-gradient(ellipse_at_center,rgba(30,58,138,0.42),transparent_70%)] blur-2xl" />
+        <div className="absolute top-[32%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] sm:w-[900px] h-[450px] sm:h-[620px] bg-[radial-gradient(ellipse_at_center,rgba(37,99,235,0.28),transparent_70%)] dark:bg-[radial-gradient(ellipse_at_center,rgba(30,58,138,0.46),transparent_70%)] blur-2xl" />
         {/* Subtle secondary ambient rim */}
         <div className="absolute top-1/4 right-[15%] w-72 h-72 bg-cyan-500/10 dark:bg-cyan-500/10 rounded-full blur-3xl" />
         {/* Deep dark vignette edges */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#f6f7f9] dark:to-[#070709] opacity-80" />
       </div>
 
-      {/* ─── MAIN STAGE CONTAINER (3-COLUMN SPLIT: LEFT TEXT | CENTER HOODIE | RIGHT BIO) ─── */}
-      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16 w-full relative z-20 my-auto">
+      {/* ─── MAIN STAGE CONTAINER (3-COLUMN SPLIT: LEFT TEXT | CENTER HOODIE | RIGHT BADGE & SOCIALS) ─── */}
+      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16 w-full relative z-10 my-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-4 items-center">
           
           {/* ─── LEFT COLUMN: GREETING & PILL CTA (Elevated higher on desktop) ─── */}
-          <div className="lg:col-span-4 flex flex-col items-start text-left z-20 order-1 lg:-translate-y-10 xl:-translate-y-16 2xl:-translate-y-20 transition-transform duration-300">
+          <div className="lg:col-span-4 flex flex-col items-start text-left z-30 order-1 lg:-translate-y-10 xl:-translate-y-16 2xl:-translate-y-20 transition-transform duration-300">
             <SectionEyebrow className="mb-3 text-[11px] text-blue-600 dark:text-blue-400">
               Visual Storyteller • {profile.location}
             </SectionEyebrow>
@@ -69,59 +69,43 @@ export const HeroSection = ({ profile, featuredProjects = [] }) => {
             </div>
           </div>
 
-          {/* ─── CENTER COLUMN: CUTOUT HOODIE PHOTOGRAPHER (HOLDING LEICA CAMERA) ─── */}
-          <div className="lg:col-span-4 flex flex-col items-center justify-center relative z-30 order-2 sm:order-2 my-2 lg:my-0">
-            <div className="relative w-full max-w-[280px] sm:max-w-[340px] lg:max-w-[360px] xl:max-w-[410px] 2xl:max-w-[440px] mx-auto group flex items-center justify-center">
+          {/* ─── CENTER COLUMN: ENLARGED CUTOUT HOODIE PHOTOGRAPHER (LAYERED IN BACKGROUND BEHIND TEXT) ─── */}
+          <div className="lg:col-span-4 flex flex-col items-center justify-center relative z-10 order-2 sm:order-2 my-2 lg:my-0">
+            <div className="relative w-full max-w-[320px] sm:max-w-[400px] lg:max-w-[440px] xl:max-w-[500px] 2xl:max-w-[540px] mx-auto group flex items-center justify-center">
               
               {/* Backlight Aura matching the cyan rim lighting on the hoodie */}
-              <div className="absolute top-8 left-1/2 -translate-x-1/2 w-48 h-48 sm:w-64 sm:h-64 bg-cyan-500/25 dark:bg-blue-500/30 rounded-full blur-3xl pointer-events-none group-hover:bg-blue-500/40 transition-all duration-700" />
+              <div className="absolute top-8 left-1/2 -translate-x-1/2 w-64 h-64 sm:w-80 sm:h-80 bg-cyan-500/25 dark:bg-blue-500/35 rounded-full blur-3xl pointer-events-none group-hover:bg-blue-500/45 transition-all duration-700" />
 
-              {/* Seamless Cutout Figure */}
+              {/* Enlarged Seamless Cutout Figure */}
               <div className="relative w-full flex items-center justify-center">
                 <img
                   src={hoodiePhotographerImg}
                   alt="Photographer in black hoodie holding camera"
-                  className="w-auto h-auto max-h-[50vh] sm:max-h-[55vh] lg:max-h-[60vh] xl:max-h-[64vh] 2xl:max-h-[66vh] object-contain object-bottom drop-shadow-[0_20px_35px_rgba(0,0,0,0.45)] dark:drop-shadow-[0_25px_45px_rgba(0,0,0,0.9)] filter contrast-105 transition-transform duration-700 group-hover:scale-105 select-none"
+                  className="w-auto h-auto max-h-[56vh] sm:max-h-[62vh] lg:max-h-[68vh] xl:max-h-[74vh] 2xl:max-h-[78vh] object-contain object-bottom drop-shadow-[0_20px_35px_rgba(0,0,0,0.45)] dark:drop-shadow-[0_25px_45px_rgba(0,0,0,0.95)] filter contrast-105 transition-transform duration-700 group-hover:scale-[1.03] select-none"
                 />
-
-                {/* Floating Micro Badge on image */}
-                <div className="absolute top-4 left-2 sm:left-4 z-20 pointer-events-none">
-                  <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/75 backdrop-blur-md border border-white/15 text-[10px] font-mono text-white/90 shadow-lg">
-                    <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
-                    <span>STEALTH OPERATOR</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Floating Experience Badge (Matches reference UI) */}
-              <div className="absolute -top-3 -right-2 sm:-top-4 sm:-right-4 bg-white dark:bg-[#121318] text-neutral-900 dark:text-white border border-neutral-200 dark:border-white/10 px-3.5 py-2 rounded-2xl shadow-xl hidden sm:flex items-center gap-2.5 z-20 pointer-events-none">
-                <div className="w-7 h-7 rounded-lg bg-blue-500/10 dark:bg-blue-400/10 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold text-xs">
-                  ★
-                </div>
-                <div>
-                  <span className="block text-xs font-bold leading-none">12+ Years</span>
-                  <span className="text-[9px] uppercase tracking-wider text-neutral-500 dark:text-neutral-400 font-mono">Behind Lens</span>
-                </div>
               </div>
             </div>
           </div>
 
-          {/* ─── RIGHT COLUMN: ABOUT BIO & SOCIALS (Elevated on desktop) ─── */}
-          <div className="lg:col-span-4 flex flex-col items-start lg:pl-6 z-20 order-3 lg:-translate-y-6 xl:-translate-y-10 2xl:-translate-y-14 transition-transform duration-300">
-            {/* About us / me title */}
-            <div className="flex items-center gap-2 mb-3">
-              <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
-              <h2 className="text-xs uppercase font-mono tracking-widest text-neutral-500 dark:text-neutral-400 font-semibold">
-                About me
-              </h2>
+          {/* ─── RIGHT COLUMN: 12+ YEARS BADGE & SOCIALS (Elevated on desktop) ─── */}
+          <div className="lg:col-span-4 flex flex-col items-start lg:pl-6 z-30 order-3 lg:-translate-y-8 xl:-translate-y-12 2xl:-translate-y-16 transition-transform duration-300">
+            
+            {/* 12+ Years Behind Lens Card (Transferred to right side as requested) */}
+            <div className="inline-flex items-center gap-3.5 px-4 sm:px-5 py-3 sm:py-3.5 rounded-2xl bg-white/80 dark:bg-[#121318]/90 backdrop-blur-md border border-neutral-200/80 dark:border-white/10 shadow-xl mb-6 hover:scale-105 transition-transform duration-300">
+              <div className="w-10 h-10 rounded-xl bg-blue-500/10 dark:bg-blue-400/10 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold text-base shadow-inner">
+                ★
+              </div>
+              <div>
+                <span className="block text-base sm:text-lg font-black tracking-tight text-neutral-900 dark:text-white leading-none">
+                  12+ Years
+                </span>
+                <span className="text-[10px] uppercase tracking-wider text-neutral-500 dark:text-neutral-400 font-mono mt-1 block">
+                  Behind the Lens
+                </span>
+              </div>
             </div>
 
-            {/* Paragraph Bio */}
-            <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed font-light mb-6">
-              {profile.bio}
-            </p>
-
-            {/* Find me on: Socials List (Round icon buttons matching reference) */}
+            {/* Find me on: Socials List */}
             <div className="w-full pt-4 border-t border-neutral-200 dark:border-neutral-800/80">
               <span className="block text-[11px] font-mono uppercase tracking-widest text-neutral-500 dark:text-neutral-400 mb-3">
                 Find me on:
@@ -169,7 +153,7 @@ export const HeroSection = ({ profile, featuredProjects = [] }) => {
               </div>
             </div>
 
-            {/* Interactive Feature Pill (Matching reference: "What is [toggle pill] UI/UX Design") */}
+            {/* Interactive Feature Pill */}
             <div className="mt-5 flex items-center gap-3">
               <span className="text-[11px] font-mono text-neutral-500 dark:text-neutral-400">
                 Discipline:
@@ -183,9 +167,9 @@ export const HeroSection = ({ profile, featuredProjects = [] }) => {
         </div>
       </div>
 
-      {/* ─── MASSIVE METALLIC TITANIC WORDMARK: "PHOTOGRAPHER" (Raised higher on desktop) ─── */}
-      <div className="w-full relative z-10 flex items-center justify-center overflow-hidden -mt-6 sm:-mt-8 lg:-mt-16 xl:-mt-24 2xl:-mt-28 select-none pointer-events-none">
-        <h2 className="text-[12vw] sm:text-[11vw] lg:text-[10.5vw] xl:text-[145px] 2xl:text-[175px] font-black uppercase tracking-tight text-center leading-none bg-gradient-to-b from-neutral-300 via-neutral-400 to-neutral-600 dark:from-white/95 dark:via-neutral-300/80 dark:to-neutral-700/25 bg-clip-text text-transparent drop-shadow-sm opacity-90 transition-all duration-500">
+      {/* ─── MASSIVE METALLIC TITANIC WORDMARK: "PHOTOGRAPHER" (IN FRONT OF IMAGE FOR MAXIMUM VISIBILITY) ─── */}
+      <div className="w-full relative z-20 flex items-center justify-center overflow-hidden -mt-10 sm:-mt-14 lg:-mt-20 xl:-mt-28 2xl:-mt-32 select-none pointer-events-none">
+        <h2 className="text-[12.5vw] sm:text-[11.5vw] lg:text-[10.5vw] xl:text-[150px] 2xl:text-[180px] font-black uppercase tracking-tight text-center leading-none bg-gradient-to-b from-neutral-200 via-neutral-300 to-neutral-500 dark:from-white dark:via-neutral-200 dark:to-neutral-500/40 bg-clip-text text-transparent drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)] opacity-95 transition-all duration-500">
           PHOTOGRAPHER
         </h2>
       </div>
