@@ -74,14 +74,14 @@ export const HeroSection = ({ profile, featuredProjects = [] }) => {
             <div className="relative w-full max-w-[340px] sm:max-w-[420px] lg:max-w-[460px] xl:max-w-[500px] 2xl:max-w-[540px] mx-auto group flex items-center justify-center">
               
               {/* Backlight Aura around the head and shoulders */}
-              <div className="absolute top-10 left-1/2 -translate-x-1/2 w-56 h-56 sm:w-72 sm:h-72 bg-blue-500/25 dark:bg-blue-400/20 rounded-full blur-3xl pointer-events-none group-hover:bg-blue-500/35 transition-all duration-700" />
+              <div className="absolute top-10 left-1/2 -translate-x-1/2 w-56 h-56 sm:w-72 sm:h-72 bg-blue-500/10 dark:bg-blue-400/20 rounded-full blur-3xl pointer-events-none group-hover:bg-blue-500/20 transition-all duration-700" />
 
-              {/* Character Transparent Cutout Image with seamless bottom dissolve */}
-              <div className="relative w-full flex items-center justify-center [mask-image:linear-gradient(to_bottom,black_82%,transparent_100%)]">
+              {/* Character Transparent Cutout Image — 100% clean and seamless (no masks, no borders, no clipped shadows) */}
+              <div className="relative w-full flex items-center justify-center">
                 <img
                   src={hoodiePhotographerImg}
                   alt="Professional photographer in black hoodie looking down"
-                  className="w-full h-auto max-h-[55vh] sm:max-h-[62vh] lg:max-h-[68vh] xl:max-h-[72vh] 2xl:max-h-[76vh] object-contain object-bottom drop-shadow-[0_25px_45px_rgba(0,0,0,0.55)] dark:drop-shadow-[0_30px_60px_rgba(0,0,0,0.95)] transition-transform duration-700 group-hover:scale-[1.02]"
+                  className="w-full h-auto max-h-[55vh] sm:max-h-[62vh] lg:max-h-[68vh] xl:max-h-[72vh] 2xl:max-h-[76vh] object-contain object-bottom transition-transform duration-700 group-hover:scale-[1.02] pointer-events-none select-none"
                 />
               </div>
             </div>
