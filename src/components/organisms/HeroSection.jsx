@@ -34,8 +34,8 @@ export const HeroSection = ({ profile, featuredProjects = [] }) => {
       <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16 w-full relative z-20 my-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-4 items-center">
           
-          {/* ─── LEFT COLUMN: GREETING & PILL CTA ─── */}
-          <div className="lg:col-span-4 flex flex-col items-start text-left z-20 order-1">
+          {/* ─── LEFT COLUMN: GREETING & PILL CTA (Elevated higher on desktop) ─── */}
+          <div className="lg:col-span-4 flex flex-col items-start text-left z-20 order-1 lg:-translate-y-10 xl:-translate-y-16 2xl:-translate-y-20 transition-transform duration-300">
             <SectionEyebrow className="mb-3 text-[11px] text-blue-600 dark:text-blue-400">
               Visual Storyteller • {profile.location}
             </SectionEyebrow>
@@ -106,8 +106,8 @@ export const HeroSection = ({ profile, featuredProjects = [] }) => {
             </div>
           </div>
 
-          {/* ─── RIGHT COLUMN: ABOUT BIO & SOCIALS (Matches Reference Right Column) ─── */}
-          <div className="lg:col-span-4 flex flex-col items-start lg:pl-6 z-20 order-3">
+          {/* ─── RIGHT COLUMN: ABOUT BIO & SOCIALS (Elevated on desktop) ─── */}
+          <div className="lg:col-span-4 flex flex-col items-start lg:pl-6 z-20 order-3 lg:-translate-y-6 xl:-translate-y-10 2xl:-translate-y-14 transition-transform duration-300">
             {/* About us / me title */}
             <div className="flex items-center gap-2 mb-3">
               <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
