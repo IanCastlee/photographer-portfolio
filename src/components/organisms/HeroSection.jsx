@@ -182,23 +182,25 @@ export const HeroSection = ({ profile, featuredProjects = [] }) => {
         </div>
       </div>
 
-      {/* ─── CINEMATIC BLOCKBUSTER MOVIE-STYLE WORDMARK: "PHOTOGRAPHER" ─── */}
-      {/* With safe margins on both desktop and mobile, plus tight cinematic letter-spacing */}
-      <div className="w-full relative z-20 flex flex-col items-center justify-center pb-2 px-6 sm:px-10 lg:px-16 xl:px-24 select-none pointer-events-none">
+      {/* ─── MAXIMIZED CINEMATIC BLOCKBUSTER TITANIC WORDMARK WITH CONTINUOUS PING-PONG LIGHT SWEEP ─── */}
+      <div className="w-full relative z-20 flex flex-col items-center justify-center pb-2 px-4 sm:px-6 lg:px-8 xl:px-12 select-none pointer-events-none">
         
         {/* Cinematic Film Stamp Tag */}
-        <span className="block text-[8px] sm:text-[10px] md:text-[11px] font-mono tracking-[0.25em] sm:tracking-[0.32em] text-cyan-500 dark:text-cyan-400 uppercase mb-1 drop-shadow font-semibold">
+        <span className="block text-[8px] sm:text-[10px] md:text-[11px] font-mono tracking-[0.25em] sm:tracking-[0.35em] text-cyan-500 dark:text-cyan-400 uppercase mb-1 drop-shadow font-semibold">
           A VISUAL DIRECTION BY VINCENT • 35MM FULL-FRAME
         </span>
 
-        {/* Main Movie Poster Title Container with Contained Width & Safe Margins */}
-        <div className="relative w-full max-w-[1400px] xl:max-w-[1480px] mx-auto flex items-center justify-center">
+        {/* Maximized Container with Slight Left/Right Margins */}
+        <div className="relative w-full max-w-[1720px] mx-auto flex items-center justify-center overflow-hidden py-1">
           
+          {/* ─── CONTINUOUS LIGHT BEAM SWEEP (LEFT TO RIGHT & RIGHT TO LEFT) ─── */}
+          <div className="absolute inset-y-0 w-32 sm:w-52 lg:w-72 bg-gradient-to-r from-transparent via-cyan-300/40 via-white/80 to-transparent blur-md pointer-events-none animate-light-sweep z-30" />
+
           {/* Subtle Ambient Laser Horizon Glow behind text */}
-          <div className="absolute top-[52%] left-1/2 -translate-x-1/2 w-4/5 h-[1.5px] bg-gradient-to-r from-transparent via-cyan-400/50 via-blue-500/60 to-transparent blur-[0.5px]" />
+          <div className="absolute top-[52%] left-1/2 -translate-x-1/2 w-full h-[2px] bg-gradient-to-r from-transparent via-cyan-400/60 via-blue-500/70 to-transparent blur-[0.5px]" />
           
-          {/* Main Blockbuster Movie Title: Tight spacing, Metallic Chrome Finish, Glowing Drop Shadow */}
-          <h2 className="relative text-[7vw] sm:text-[7.8vw] md:text-[8.2vw] lg:text-[8.5vw] xl:text-[116px] 2xl:text-[132px] font-black uppercase tracking-tight sm:tracking-normal lg:tracking-[0.03em] xl:tracking-[0.05em] text-center leading-none bg-gradient-to-b from-white via-slate-100 via-neutral-300 to-slate-500 dark:from-white dark:via-neutral-100 dark:via-neutral-300 dark:to-neutral-600/35 bg-clip-text text-transparent drop-shadow-[0_0_35px_rgba(37,99,235,0.45)] dark:drop-shadow-[0_0_40px_rgba(59,130,246,0.35)] drop-shadow-[0_12px_24px_rgba(0,0,0,0.95)] opacity-95 transition-all duration-500">
+          {/* Main Blockbuster Movie Title: Maximized & Enlarged with Shimmering Chrome Gradient */}
+          <h2 className="relative text-[8.2vw] sm:text-[9.2vw] md:text-[10.2vw] lg:text-[11vw] xl:text-[145px] 2xl:text-[170px] font-black uppercase tracking-tight sm:tracking-normal lg:tracking-[0.02em] text-center leading-none bg-[linear-gradient(90deg,#94a3b8_0%,#ffffff_22%,#38bdf8_28%,#ffffff_34%,#94a3b8_50%,#ffffff_72%,#38bdf8_78%,#ffffff_84%,#94a3b8_100%)] dark:bg-[linear-gradient(90deg,#475569_0%,#ffffff_22%,#38bdf8_28%,#ffffff_34%,#475569_50%,#ffffff_72%,#38bdf8_78%,#ffffff_84%,#475569_100%)] bg-clip-text text-transparent drop-shadow-[0_0_35px_rgba(37,99,235,0.45)] dark:drop-shadow-[0_0_40px_rgba(59,130,246,0.35)] drop-shadow-[0_12px_24px_rgba(0,0,0,0.95)] opacity-95 animate-chrome-shimmer transition-all duration-500">
             PHOTOGRAPHER
           </h2>
         </div>

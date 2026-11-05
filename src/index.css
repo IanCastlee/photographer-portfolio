@@ -92,3 +92,47 @@
 .animate-focus-pulse {
   animation: focusPulse 3.5s ease-in-out infinite;
 }
+
+/* ─── CONTINUOUS CINEMATIC PING-PONG LIGHT BEAM SWEEP (LEFT TO RIGHT AND RIGHT TO LEFT) ─── */
+@keyframes lightSweepPingPong {
+  0% {
+    transform: translateX(-140%) skewX(-15deg);
+    opacity: 0.35;
+  }
+  30% {
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateX(140%) skewX(-15deg);
+    opacity: 0.35;
+  }
+  80% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateX(-140%) skewX(-15deg);
+    opacity: 0.35;
+  }
+}
+
+/* Continuous Chrome Shimmer Oscillation */
+@keyframes chromeShimmerPingPong {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-light-sweep {
+  animation: lightSweepPingPong 5s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+}
+
+.animate-chrome-shimmer {
+  background-size: 220% 100%;
+  animation: chromeShimmerPingPong 5s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+}
