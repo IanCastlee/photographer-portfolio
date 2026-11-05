@@ -182,25 +182,16 @@ export const HeroSection = ({ profile, featuredProjects = [] }) => {
         </div>
       </div>
 
-      {/* ─── MAXIMIZED CINEMATIC BLOCKBUSTER TITANIC WORDMARK WITH CONTINUOUS PING-PONG LIGHT SWEEP ─── */}
-      <div className="w-full relative z-20 flex flex-col items-center justify-center pb-2 px-4 sm:px-6 lg:px-8 xl:px-12 select-none pointer-events-none">
-        
-        {/* Cinematic Film Stamp Tag */}
-        <span className="block text-[8px] sm:text-[10px] md:text-[11px] font-mono tracking-[0.25em] sm:tracking-[0.35em] text-cyan-500 dark:text-cyan-400 uppercase mb-1 drop-shadow font-semibold">
-          A VISUAL DIRECTION BY VINCENT • 35MM FULL-FRAME
-        </span>
-
+      {/* ─── MAXIMIZED TITANIC WORDMARK WITH CONTINUOUS PING-PONG LIGHT SWEEP (CLEAN, NO BACKGROUND) ─── */}
+      <div className="w-full relative z-20 flex items-center justify-center pb-2 px-4 sm:px-6 lg:px-8 xl:px-12 select-none pointer-events-none">
         {/* Maximized Container with Slight Left/Right Margins */}
         <div className="relative w-full max-w-[1720px] mx-auto flex items-center justify-center overflow-hidden py-1">
           
           {/* ─── CONTINUOUS LIGHT BEAM SWEEP (LEFT TO RIGHT & RIGHT TO LEFT) ─── */}
           <div className="absolute inset-y-0 w-32 sm:w-52 lg:w-72 bg-gradient-to-r from-transparent via-cyan-300/40 via-white/80 to-transparent blur-md pointer-events-none animate-light-sweep z-30" />
 
-          {/* Subtle Ambient Laser Horizon Glow behind text */}
-          <div className="absolute top-[52%] left-1/2 -translate-x-1/2 w-full h-[2px] bg-gradient-to-r from-transparent via-cyan-400/60 via-blue-500/70 to-transparent blur-[0.5px]" />
-          
-          {/* Main Blockbuster Movie Title: Maximized & Enlarged with Shimmering Chrome Gradient */}
-          <h2 className="relative text-[8.2vw] sm:text-[9.2vw] md:text-[10.2vw] lg:text-[11vw] xl:text-[145px] 2xl:text-[170px] font-black uppercase tracking-tight sm:tracking-normal lg:tracking-[0.02em] text-center leading-none bg-[linear-gradient(90deg,#94a3b8_0%,#ffffff_22%,#38bdf8_28%,#ffffff_34%,#94a3b8_50%,#ffffff_72%,#38bdf8_78%,#ffffff_84%,#94a3b8_100%)] dark:bg-[linear-gradient(90deg,#475569_0%,#ffffff_22%,#38bdf8_28%,#ffffff_34%,#475569_50%,#ffffff_72%,#38bdf8_78%,#ffffff_84%,#475569_100%)] bg-clip-text text-transparent drop-shadow-[0_0_35px_rgba(37,99,235,0.45)] dark:drop-shadow-[0_0_40px_rgba(59,130,246,0.35)] drop-shadow-[0_12px_24px_rgba(0,0,0,0.95)] opacity-95 animate-chrome-shimmer transition-all duration-500">
+          {/* Main Title: Clean Metallic Finish with Specular Shimmer */}
+          <h2 className="relative text-[8.2vw] sm:text-[9.2vw] md:text-[10.2vw] lg:text-[11vw] xl:text-[145px] 2xl:text-[170px] font-black uppercase tracking-tight sm:tracking-normal lg:tracking-[0.02em] text-center leading-none bg-[linear-gradient(90deg,#94a3b8_0%,#ffffff_22%,#38bdf8_28%,#ffffff_34%,#94a3b8_50%,#ffffff_72%,#38bdf8_78%,#ffffff_84%,#94a3b8_100%)] dark:bg-[linear-gradient(90deg,#475569_0%,#ffffff_22%,#38bdf8_28%,#ffffff_34%,#475569_50%,#ffffff_72%,#38bdf8_78%,#ffffff_84%,#475569_100%)] bg-clip-text text-transparent opacity-95 animate-chrome-shimmer transition-all duration-500">
             PHOTOGRAPHER
           </h2>
         </div>
