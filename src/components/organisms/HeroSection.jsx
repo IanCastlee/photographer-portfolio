@@ -182,16 +182,13 @@ export const HeroSection = ({ profile, featuredProjects = [] }) => {
         </div>
       </div>
 
-      {/* ─── MAXIMIZED TITANIC WORDMARK WITH CONTINUOUS PING-PONG LIGHT SWEEP (CLEAN, NO BACKGROUND) ─── */}
+      {/* ─── MAXIMIZED TITANIC WORDMARK WITH EXACTLY ONE COMPACT SLIM LIGHT SWEEP ─── */}
       <div className="w-full relative z-20 flex items-center justify-center pb-2 px-4 sm:px-6 lg:px-8 xl:px-12 select-none pointer-events-none">
         {/* Maximized Container with Slight Left/Right Margins */}
         <div className="relative w-full max-w-[1720px] mx-auto flex items-center justify-center overflow-hidden py-1">
           
-          {/* ─── CONTINUOUS LIGHT BEAM SWEEP (LEFT TO RIGHT & RIGHT TO LEFT) ─── */}
-          <div className="absolute inset-y-0 w-32 sm:w-52 lg:w-72 bg-gradient-to-r from-transparent via-cyan-300/40 via-white/80 to-transparent blur-md pointer-events-none animate-light-sweep z-30" />
-
-          {/* Main Title: Clean Metallic Finish with Specular Shimmer */}
-          <h2 className="relative text-[8.2vw] sm:text-[9.2vw] md:text-[10.2vw] lg:text-[11vw] xl:text-[145px] 2xl:text-[170px] font-black uppercase tracking-tight sm:tracking-normal lg:tracking-[0.02em] text-center leading-none bg-[linear-gradient(90deg,#94a3b8_0%,#ffffff_22%,#38bdf8_28%,#ffffff_34%,#94a3b8_50%,#ffffff_72%,#38bdf8_78%,#ffffff_84%,#94a3b8_100%)] dark:bg-[linear-gradient(90deg,#475569_0%,#ffffff_22%,#38bdf8_28%,#ffffff_34%,#475569_50%,#ffffff_72%,#38bdf8_78%,#ffffff_84%,#475569_100%)] bg-clip-text text-transparent opacity-95 animate-chrome-shimmer transition-all duration-500">
+          {/* Main Title: Clean Metallic Finish with EXACTLY ONE Slim Specular Light Beam traveling L-R & R-L */}
+          <h2 className="relative text-[8.2vw] sm:text-[9.2vw] md:text-[10.2vw] lg:text-[11vw] xl:text-[145px] 2xl:text-[170px] font-black uppercase tracking-tight sm:tracking-normal lg:tracking-[0.02em] text-center leading-none bg-[linear-gradient(105deg,#64748b_0%,#64748b_46%,#ffffff_49.5%,#38bdf8_50%,#ffffff_50.5%,#64748b_54%,#64748b_100%)] dark:bg-[linear-gradient(105deg,#475569_0%,#475569_46%,#ffffff_49.5%,#38bdf8_50%,#ffffff_50.5%,#475569_54%,#475569_100%)] bg-clip-text text-transparent opacity-95 animate-single-light transition-all duration-300">
             PHOTOGRAPHER
           </h2>
         </div>
