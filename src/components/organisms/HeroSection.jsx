@@ -18,7 +18,7 @@ export const HeroSection = ({ profile, featuredProjects = [] }) => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex flex-col justify-between pt-24 pb-0 sm:pt-28 overflow-hidden bg-[#f6f7f9] dark:bg-[#070709] transition-colors duration-500"
+      className="relative min-h-screen flex flex-col justify-between pt-20 pb-0 sm:pt-24 overflow-hidden bg-[#f6f7f9] dark:bg-[#070709] transition-colors duration-500"
     >
       {/* ─── ATMOSPHERIC BACKGROUND SPOTLIGHT ─── */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -43,17 +43,17 @@ export const HeroSection = ({ profile, featuredProjects = [] }) => {
         />
       </div>
 
-      {/* ─── MAIN STAGE CONTAINER (SYMMETRICAL DUAL COLUMNS: LEFT GREETING | RIGHT STATS & SOCIALS) ─── */}
-      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16 w-full relative z-30 my-auto">
+      {/* ─── MAIN STAGE CONTAINER (TOP-ALIGNED DUAL SIDES: TOP-LEFT GREETING | TOP-RIGHT STATS) ─── */}
+      <div className="max-w-[1536px] mx-auto px-6 sm:px-10 lg:px-12 xl:px-16 w-full relative z-30 pt-2 sm:pt-4 lg:pt-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-start">
           
-          {/* ─── LEFT COLUMN: GREETING & PILL CTA ─── */}
-          <div className="lg:col-span-4 flex flex-col items-start text-left z-30 order-1 lg:-translate-y-4 xl:-translate-y-8 transition-transform duration-300">
-            <SectionEyebrow className="mb-3 text-[11px] text-blue-600 dark:text-blue-400 font-semibold tracking-widest">
+          {/* ─── LEFT COLUMN: TOP-LEFT GREETING & PILL CTA (Placed high at top-left, not in middle) ─── */}
+          <div className="lg:col-span-4 flex flex-col items-start text-left z-30 order-1">
+            <SectionEyebrow className="mb-2 text-[11px] text-blue-600 dark:text-blue-400 font-semibold tracking-widest">
               Visual Storyteller • {profile.location}
             </SectionEyebrow>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-black uppercase tracking-tight text-neutral-900 dark:text-white leading-[1.08] mb-5">
+            <h1 className="text-3xl sm:text-4xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-black uppercase tracking-tight text-neutral-900 dark:text-white leading-[1.06] mb-5">
               Hello I'm <span className="underline decoration-blue-500 underline-offset-4 decoration-2">{profile.name}</span>, a professional photographer
             </h1>
 
@@ -62,11 +62,11 @@ export const HeroSection = ({ profile, featuredProjects = [] }) => {
             </p>
 
             {/* Vibrant Pill Action Buttons */}
-            <div className="flex flex-wrap items-center gap-3.5">
+            <div className="flex flex-wrap items-center gap-3">
               <button
                 type="button"
                 onClick={(e) => handleScrollTo(e, '#works')}
-                className="group inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs sm:text-sm tracking-wide shadow-lg shadow-blue-600/30 transition-all duration-300 hover:scale-105 active:scale-95"
+                className="group inline-flex items-center gap-2 px-6 py-3 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs sm:text-sm tracking-wide shadow-lg shadow-blue-600/30 transition-all duration-300 hover:scale-105 active:scale-95"
               >
                 <span>Explore Works</span>
                 <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -82,14 +82,14 @@ export const HeroSection = ({ profile, featuredProjects = [] }) => {
             </div>
           </div>
 
-          {/* ─── MIDDLE SPACER COLUMN (Leaves unobstructed stage for the bottom-anchored hoodie) ─── */}
+          {/* ─── MIDDLE SPACER COLUMN (Unobstructed stage for the hoodie) ─── */}
           <div className="hidden lg:block lg:col-span-4 min-h-[100px] pointer-events-none" />
 
-          {/* ─── RIGHT COLUMN: BALANCED STATS CARD, DISCIPLINE & SOCIALS ─── */}
-          <div className="lg:col-span-4 flex flex-col items-start lg:items-end z-30 order-2 lg:order-3 lg:-translate-y-4 xl:-translate-y-8 transition-transform duration-300">
+          {/* ─── RIGHT COLUMN: TOP-RIGHT STATS & SOCIALS ─── */}
+          <div className="lg:col-span-4 flex flex-col items-start lg:items-end z-30 order-2 lg:order-3">
             
             {/* Top Eyebrow to balance the left side */}
-            <SectionEyebrow className="mb-3 text-[11px] text-blue-600 dark:text-blue-400 font-semibold tracking-widest lg:text-right">
+            <SectionEyebrow className="mb-2 text-[11px] text-blue-600 dark:text-blue-400 font-semibold tracking-widest lg:text-right">
               Studio & Creative Direction
             </SectionEyebrow>
 
