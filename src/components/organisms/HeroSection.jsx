@@ -84,37 +84,24 @@ export const HeroSection = ({ profile, featuredProjects = [] }) => {
                   className="w-full h-auto max-h-[55vh] sm:max-h-[62vh] lg:max-h-[68vh] xl:max-h-[72vh] 2xl:max-h-[76vh] object-contain object-bottom drop-shadow-[0_25px_45px_rgba(0,0,0,0.55)] dark:drop-shadow-[0_30px_60px_rgba(0,0,0,0.95)] transition-transform duration-700 group-hover:scale-[1.02]"
                 />
               </div>
-
-              {/* Floating Badge (12+ Years Behind Lens) */}
-              <div className="absolute top-8 -right-2 sm:top-10 sm:-right-4 bg-white/90 dark:bg-[#121318]/90 backdrop-blur-md text-neutral-900 dark:text-white border border-neutral-200 dark:border-white/10 px-3.5 py-2 rounded-2xl shadow-xl hidden sm:flex items-center gap-2.5 z-30">
-                <div className="w-7 h-7 rounded-lg bg-blue-500/10 dark:bg-blue-400/10 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold text-xs">
-                  ★
-                </div>
-                <div>
-                  <span className="block text-xs font-bold leading-none">12+ Years</span>
-                  <span className="text-[9px] uppercase tracking-wider text-neutral-500 dark:text-neutral-400 font-mono">Behind Lens</span>
-                </div>
-              </div>
             </div>
           </div>
 
-          {/* ─── RIGHT COLUMN: ABOUT BIO & SOCIALS ─── */}
-          <div className="lg:col-span-4 flex flex-col items-start lg:pl-6 z-20 order-3">
-            {/* About us / me title */}
-            <div className="flex items-center gap-2 mb-3">
-              <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
-              <h2 className="text-xs uppercase font-mono tracking-widest text-neutral-500 dark:text-neutral-400 font-semibold">
-                About me
-              </h2>
+          {/* ─── RIGHT COLUMN: 12+ YEARS BADGE & SOCIALS (About Me removed, 12+ Years moved here) ─── */}
+          <div className="lg:col-span-4 flex flex-col items-start lg:pl-6 z-20 order-3 lg:-translate-y-10 xl:-translate-y-14 2xl:-translate-y-16 transition-transform duration-300">
+            {/* 12+ Years Behind Lens Badge */}
+            <div className="bg-white/90 dark:bg-[#121318]/95 backdrop-blur-md text-neutral-900 dark:text-white border border-neutral-200 dark:border-white/10 px-4 py-2.5 rounded-2xl shadow-xl flex items-center gap-3 mb-6 transition-all duration-300 hover:scale-105">
+              <div className="w-8 h-8 rounded-xl bg-blue-500/15 dark:bg-blue-400/15 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold text-sm shadow-inner">
+                ★
+              </div>
+              <div>
+                <span className="block text-sm font-bold leading-tight">12+ Years</span>
+                <span className="text-[10px] uppercase tracking-widest text-neutral-500 dark:text-neutral-400 font-mono">Behind Lens</span>
+              </div>
             </div>
 
-            {/* Paragraph Bio */}
-            <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed font-light mb-6">
-              {profile.bio}
-            </p>
-
             {/* Find me on: Socials List */}
-            <div className="w-full pt-4 border-t border-neutral-200 dark:border-neutral-800/80">
+            <div className="w-full pt-1 border-t border-neutral-200 dark:border-neutral-800/80">
               <span className="block text-[11px] font-mono uppercase tracking-widest text-neutral-500 dark:text-neutral-400 mb-3">
                 Find me on:
               </span>
