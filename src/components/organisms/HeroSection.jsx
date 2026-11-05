@@ -18,37 +18,37 @@ export const HeroSection = ({ profile, featuredProjects = [] }) => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex flex-col justify-between pt-24 pb-0 sm:pt-28 overflow-hidden bg-[#f6f7f9] dark:bg-[#070709] transition-colors duration-500"
+      className="relative min-h-screen flex flex-col justify-between pt-24 pb-2 sm:pt-28 overflow-hidden bg-[#f6f7f9] dark:bg-[#070709] transition-colors duration-500"
     >
-      {/* ─── ATMOSPHERIC BACKGROUND SPOTLIGHT (Cinematic Rim Glow) ─── */}
+      {/* ─── ATMOSPHERIC BACKGROUND SPOTLIGHT (Cinematic Studio Lighting) ─── */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {/* Center blue/cyan radial glow behind hoodie character */}
-        <div className="absolute top-[35%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] sm:w-[950px] h-[450px] sm:h-[650px] bg-[radial-gradient(ellipse_at_center,rgba(37,99,235,0.3),transparent_70%)] dark:bg-[radial-gradient(ellipse_at_center,rgba(30,58,138,0.5),transparent_70%)] blur-2xl" />
+        <div className="absolute top-[35%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] sm:w-[950px] h-[450px] sm:h-[650px] bg-[radial-gradient(ellipse_at_center,rgba(37,99,235,0.28),transparent_70%)] dark:bg-[radial-gradient(ellipse_at_center,rgba(30,58,138,0.48),transparent_70%)] blur-2xl" />
         {/* Secondary subtle rim lights */}
-        <div className="absolute top-1/4 right-[12%] w-72 h-72 bg-cyan-500/10 dark:bg-cyan-500/10 rounded-full blur-3xl" />
-        <div className="absolute top-1/3 left-[8%] w-72 h-72 bg-blue-500/10 dark:bg-blue-500/10 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 right-[10%] w-72 h-72 bg-cyan-500/10 dark:bg-cyan-500/10 rounded-full blur-3xl" />
+        <div className="absolute top-1/3 left-[6%] w-72 h-72 bg-blue-500/10 dark:bg-blue-500/10 rounded-full blur-3xl" />
         {/* Deep dark vignette edges */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#f6f7f9] dark:to-[#070709] opacity-80" />
       </div>
 
       {/* ─── CENTER HOODIE FIGURE ANCHORED FLUSH TO VERY BOTTOM (SAGAD SA BOTTOM) ─── */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 z-10 flex items-end justify-center pointer-events-none w-full max-w-[290px] sm:max-w-[360px] lg:max-w-[420px] xl:max-w-[470px] 2xl:max-w-[520px]">
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 z-10 flex items-end justify-center pointer-events-none w-full max-w-[280px] sm:max-w-[340px] lg:max-w-[390px] xl:max-w-[440px] 2xl:max-w-[480px]">
         {/* Backlight Aura matching the cyan rim lighting on the hoodie */}
         <div className="absolute top-12 left-1/2 -translate-x-1/2 w-64 h-64 sm:w-80 sm:h-80 bg-cyan-500/25 dark:bg-blue-500/35 rounded-full blur-3xl pointer-events-none" />
 
         <img
           src={hoodiePhotographerImg}
           alt="Photographer in black hoodie holding camera"
-          className="w-auto h-auto max-h-[60vh] sm:max-h-[68vh] lg:max-h-[76vh] xl:max-h-[82vh] 2xl:max-h-[86vh] object-contain object-bottom select-none drop-shadow-[0_20px_35px_rgba(0,0,0,0.35)] dark:drop-shadow-[0_25px_45px_rgba(0,0,0,0.95)] filter contrast-105"
+          className="w-auto h-auto max-h-[58vh] sm:max-h-[66vh] lg:max-h-[74vh] xl:max-h-[80vh] 2xl:max-h-[84vh] object-contain object-bottom select-none drop-shadow-[0_20px_35px_rgba(0,0,0,0.35)] dark:drop-shadow-[0_25px_45px_rgba(0,0,0,0.95)] filter contrast-105"
         />
       </div>
 
-      {/* ─── MAIN STAGE CONTAINER (LEFT & RIGHT COLUMNS WITH AMPLE CENTER STAGE CLEARANCE) ─── */}
-      <div className="max-w-[1560px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16 w-full relative z-30 my-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-start">
+      {/* ─── MAIN STAGE CONTAINER (FIRM DOCKING: LEFT ANCHORED LEFT | RIGHT ANCHORED RIGHT) ─── */}
+      <div className="max-w-[1680px] w-full mx-auto px-6 sm:px-10 lg:px-14 xl:px-20 relative z-30 my-auto">
+        <div className="flex flex-col lg:flex-row items-start justify-between gap-8 lg:gap-10">
           
-          {/* ─── LEFT COLUMN: GREETING & PILL CTA (Firmly anchored on the LEFT side) ─── */}
-          <div className="lg:col-span-4 xl:col-span-4 max-w-xl lg:max-w-md xl:max-w-lg flex flex-col items-start text-left z-30 order-1 lg:-translate-y-4 xl:-translate-y-8 transition-transform duration-300">
+          {/* ─── LEFT COLUMN: GREETING & PILL CTA (Firmly on the far left side, completely clear of center figure) ─── */}
+          <div className="w-full lg:w-[35%] xl:w-[32%] max-w-md lg:max-w-[380px] xl:max-w-[430px] flex flex-col items-start text-left z-30 order-1 lg:-translate-y-4 xl:-translate-y-8 transition-transform duration-300">
             <SectionEyebrow className="mb-3 text-[11px] text-blue-600 dark:text-blue-400 font-semibold tracking-widest">
               Visual Storyteller • {profile.location}
             </SectionEyebrow>
@@ -82,18 +82,15 @@ export const HeroSection = ({ profile, featuredProjects = [] }) => {
             </div>
           </div>
 
-          {/* ─── MIDDLE SPACER COLUMN (Guarantees center figure has clear breathing space) ─── */}
-          <div className="hidden lg:block lg:col-span-4 xl:col-span-4 min-h-[100px] pointer-events-none" />
-
-          {/* ─── RIGHT COLUMN: BALANCED STATS CARD, DISCIPLINE & SOCIALS ─── */}
-          <div className="lg:col-span-4 xl:col-span-4 max-w-sm lg:ml-auto flex flex-col items-start lg:items-end z-30 order-2 lg:order-3 lg:-translate-y-4 xl:-translate-y-8 transition-transform duration-300">
+          {/* ─── RIGHT COLUMN: BALANCED STATS CARD, DISCIPLINE & SOCIALS (Firmly on the far right) ─── */}
+          <div className="w-full lg:w-[35%] xl:w-[32%] max-w-md lg:max-w-[380px] xl:max-w-[430px] lg:ml-auto flex flex-col items-start lg:items-end z-30 order-2 lg:order-3 lg:-translate-y-4 xl:-translate-y-8 transition-transform duration-300">
             
             {/* Top Eyebrow to balance the left side */}
             <SectionEyebrow className="mb-3 text-[11px] text-blue-600 dark:text-blue-400 font-semibold tracking-widest lg:text-right">
               Studio & Creative Direction
             </SectionEyebrow>
 
-            {/* 12+ Years & Studio Experience Card (Visually balances the left headline) */}
+            {/* 12+ Years & Studio Experience Card */}
             <div className="w-full max-w-sm p-4 sm:p-5 rounded-2xl bg-white dark:bg-[#121318] border border-neutral-200 dark:border-white/10 shadow-xl backdrop-blur-md mb-4 text-left transition-all duration-300 hover:border-blue-500/40">
               <div className="flex items-center gap-3.5 mb-3.5">
                 <div className="w-11 h-11 rounded-xl bg-blue-500/10 dark:bg-blue-400/15 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold text-lg shrink-0 shadow-inner">
@@ -130,7 +127,7 @@ export const HeroSection = ({ profile, featuredProjects = [] }) => {
               </div>
             </div>
 
-            {/* Bottom Row: Social Links & Discipline Pill (Balances left action buttons) */}
+            {/* Bottom Row: Social Links & Discipline Pill */}
             <div className="w-full max-w-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pt-3 border-t border-neutral-200 dark:border-neutral-800/80">
               {/* Discipline Pill */}
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white dark:bg-[#121318] border border-neutral-200 dark:border-white/10 shadow-sm text-xs font-mono text-neutral-800 dark:text-neutral-200">
@@ -185,20 +182,23 @@ export const HeroSection = ({ profile, featuredProjects = [] }) => {
         </div>
       </div>
 
-      {/* ─── CINEMATIC BLOCKBUSTER MOVIE-STYLE TITANIC WORDMARK: "PHOTOGRAPHER" ─── */}
-      <div className="w-full relative z-20 flex flex-col items-center justify-center pb-2 px-4 sm:px-8 md:px-12 select-none pointer-events-none">
+      {/* ─── CINEMATIC BLOCKBUSTER MOVIE-STYLE WORDMARK: "PHOTOGRAPHER" ─── */}
+      {/* With safe margins on both desktop and mobile, plus tight cinematic letter-spacing */}
+      <div className="w-full relative z-20 flex flex-col items-center justify-center pb-2 px-6 sm:px-10 lg:px-16 xl:px-24 select-none pointer-events-none">
         
-        {/* Cinematic Film Stamp Header */}
-        <span className="block text-[8px] sm:text-[10px] md:text-[11px] font-mono tracking-[0.25em] sm:tracking-[0.35em] text-cyan-500 dark:text-cyan-400 uppercase mb-0.5 sm:mb-1 drop-shadow font-semibold">
+        {/* Cinematic Film Stamp Tag */}
+        <span className="block text-[8px] sm:text-[10px] md:text-[11px] font-mono tracking-[0.25em] sm:tracking-[0.32em] text-cyan-500 dark:text-cyan-400 uppercase mb-1 drop-shadow font-semibold">
           A VISUAL DIRECTION BY VINCENT • 35MM FULL-FRAME
         </span>
 
-        {/* Anamorphic Cyan/Blue Horizon Flare Streak */}
-        <div className="relative w-full max-w-6xl flex items-center justify-center">
-          <div className="absolute top-1/2 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-cyan-400/50 via-blue-500/60 to-transparent blur-[0.5px]" />
+        {/* Main Movie Poster Title Container with Contained Width & Safe Margins */}
+        <div className="relative w-full max-w-[1400px] xl:max-w-[1480px] mx-auto flex items-center justify-center">
           
-          {/* Main Blockbuster Movie Title */}
-          <h2 className="relative text-[7.5vw] sm:text-[8.5vw] md:text-[9.5vw] lg:text-[10vw] xl:text-[128px] 2xl:text-[148px] font-black uppercase tracking-[0.06em] sm:tracking-[0.14em] lg:tracking-[0.20em] text-center leading-none bg-gradient-to-b from-white via-slate-200 via-neutral-300 to-slate-600 dark:from-white dark:via-neutral-100 dark:via-neutral-300 dark:to-neutral-700/40 bg-clip-text text-transparent drop-shadow-[0_0_35px_rgba(37,99,235,0.45)] dark:drop-shadow-[0_0_45px_rgba(59,130,246,0.35)] drop-shadow-[0_12px_24px_rgba(0,0,0,0.95)] opacity-95 transition-all duration-500">
+          {/* Subtle Ambient Laser Horizon Glow behind text */}
+          <div className="absolute top-[52%] left-1/2 -translate-x-1/2 w-4/5 h-[1.5px] bg-gradient-to-r from-transparent via-cyan-400/50 via-blue-500/60 to-transparent blur-[0.5px]" />
+          
+          {/* Main Blockbuster Movie Title: Tight spacing, Metallic Chrome Finish, Glowing Drop Shadow */}
+          <h2 className="relative text-[7vw] sm:text-[7.8vw] md:text-[8.2vw] lg:text-[8.5vw] xl:text-[116px] 2xl:text-[132px] font-black uppercase tracking-tight sm:tracking-normal lg:tracking-[0.03em] xl:tracking-[0.05em] text-center leading-none bg-gradient-to-b from-white via-slate-100 via-neutral-300 to-slate-500 dark:from-white dark:via-neutral-100 dark:via-neutral-300 dark:to-neutral-600/35 bg-clip-text text-transparent drop-shadow-[0_0_35px_rgba(37,99,235,0.45)] dark:drop-shadow-[0_0_40px_rgba(59,130,246,0.35)] drop-shadow-[0_12px_24px_rgba(0,0,0,0.95)] opacity-95 transition-all duration-500">
             PHOTOGRAPHER
           </h2>
         </div>
