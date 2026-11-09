@@ -1,6 +1,6 @@
 export const photographerData = {
   profile: {
-    name: "Vincent",
+    name: "Eyhan",
     brandName: "Photographer X",
     role: "Professional Photographer & Visual Artist",
     location: "New York & Los Angeles",

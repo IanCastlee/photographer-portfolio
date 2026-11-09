@@ -1,22 +1,23 @@
-import React, { useState } from 'react';
-import { Navbar } from '../organisms/Navbar';
-import { HeroSection } from '../organisms/HeroSection';
-import { PortfolioSection } from '../organisms/PortfolioSection';
-import { ServicesSection } from '../organisms/ServicesSection';
-import { AboutSection } from '../organisms/AboutSection';
-import { TestimonialsSection } from '../organisms/TestimonialsSection';
-import { ContactSection } from '../organisms/ContactSection';
-import { Footer } from '../organisms/Footer';
-import { LightboxModal } from '../organisms/LightboxModal';
+import React, { useState } from "react";
+import { Navbar } from "../organisms/Navbar";
+import { HeroSection } from "../organisms/HeroSection";
+import { PortfolioSection } from "../organisms/PortfolioSection";
+import { ServicesSection } from "../organisms/ServicesSection";
+import { AboutSection } from "../organisms/AboutSection";
+import { TestimonialsSection } from "../organisms/TestimonialsSection";
+import { ContactSection } from "../organisms/ContactSection";
+import { Footer } from "../organisms/Footer";
+import { LightboxModal } from "../organisms/LightboxModal";
 
 export const PortfolioTemplate = ({ data }) => {
-  const [selectedServiceForBooking, setSelectedServiceForBooking] = useState('');
+  const [selectedServiceForBooking, setSelectedServiceForBooking] =
+    useState("");
 
   const handleSelectService = (serviceTitle) => {
     setSelectedServiceForBooking(serviceTitle);
-    const contactElem = document.querySelector('#contact');
+    const contactElem = document.querySelector("#contact");
     if (contactElem) {
-      contactElem.scrollIntoView({ behavior: 'smooth' });
+      contactElem.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -49,9 +50,7 @@ export const PortfolioTemplate = ({ data }) => {
           gear={data.gear}
         />
 
-        <TestimonialsSection
-          testimonials={data.testimonials}
-        />
+        <TestimonialsSection testimonials={data.testimonials} />
 
         <ContactSection
           profile={data.profile}
