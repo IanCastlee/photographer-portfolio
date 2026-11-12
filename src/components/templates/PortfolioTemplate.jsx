@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Navbar } from "../organisms/Navbar";
+import { ScrollProgress } from "../atoms/ScrollProgress";
 import { HeroSection } from "../organisms/HeroSection";
 import { PortfolioSection } from "../organisms/PortfolioSection";
 import { ServicesSection } from "../organisms/ServicesSection";
@@ -23,7 +24,8 @@ export const PortfolioTemplate = ({ data }) => {
 
   return (
     <div className="min-h-screen bg-[#f8f9fa] dark:bg-[#0b0b0c] text-neutral-900 dark:text-[#f4f4f5] transition-colors duration-300">
-      {/* Navigation */}
+      {/* Navigation & Scrollytelling Progress */}
+      <ScrollProgress />
       <Navbar brandName={data.profile.brandName} />
 
       {/* Main Content Sections */}
